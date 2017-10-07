@@ -26,7 +26,7 @@ cc.Class({
 		if(this.quest) {
 			seq.push(cc.spawn(
 				cc.animate(this.node, null, cc.WrapMode.Reverse),
-				require('Profile').confirmAction(this.quest)
+				//require('Profile').confirmAction(this.quest)
 			));
 		} else {
 			seq.push(cc.animate(this.node, null, cc.WrapMode.Reverse));

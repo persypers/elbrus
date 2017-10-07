@@ -43,10 +43,6 @@ cc.Class({
 
 	play : function(type, data, onDone) {
 		this.node.on(cc.Node.EventType.TOUCH_START, this.onClick, this);
-		if( (type == 'unlock')
-		&& (require('Model').case.facts[data] || (data instanceof Object && (data.fact || data.type == 'fact') ) ) ) {
-			type = 'unlockFact';
-		}
 
 		var entry = popups[type];
 
