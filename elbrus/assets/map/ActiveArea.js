@@ -24,7 +24,7 @@ cc.Class({
 		if(script) {
 				script(this);
 		} else if(this.dialog) {
-				cc.director.getScene().getComponentInChildren('DlgController').play(this.dialog);
+				cc.director.getScene().getComponentInChildren('DlgController').playDialog(this.dialog);
 		} else if(this.handler) {
 				var comp = this.handler.target.getComponent(this.handler.component);
 				comp[this.handler.handler].call(comp, this.handler.customEventData);

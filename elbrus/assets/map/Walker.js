@@ -41,11 +41,6 @@ cc.Class({
 	onCollisionEnter: function (other, self) {
 		if(other.node.group == 'obstacle') {
 			this._obstacles.push(other);
-		} else {
-			var area = other.getComponent('ActiveArea');
-			if(area) {
-				area.onPlayerEntered();
-			}
 		}
 	},
 

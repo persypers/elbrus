@@ -9,7 +9,7 @@ cc.Class({
             notify : function() {
                 if(this.activateTarget) {
                     this.activateButton.node.active = true;
-                    this.activateButton.getComponentInChildre(cc.Label).string = this.activateTarget.activateText;
+                    this.activateButton.getComponentInChildren(cc.Label).string = this.activateTarget.actionText;
                 } else {
                     this.activateButton.node.active = false;
                 }
@@ -20,6 +20,7 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         cc.ui = this;
+        this.activateButton.node.active = false;
     },
 
     onActivate: function() {

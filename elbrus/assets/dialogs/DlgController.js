@@ -17,8 +17,10 @@ cc.Class({
 		cc.dlg = this;
     },
 
-	playDialog : function(dlg) {
-		dlg = require('testDlg');
+	playDialog : function(dlg, arg2) {
+		if(typeof(dlg) == 'string') {
+			dlg = require(dlg);
+		}
 		this.dlg = dlg;
 		var seq = [];
 		this.choiceBox.node.active = false;
