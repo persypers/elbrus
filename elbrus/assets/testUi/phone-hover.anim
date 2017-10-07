@@ -1,0 +1,31 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "phone-hover",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.3333333333333333,
+  "sample": 60,
+  "speed": 2,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": -487,
+          "curve": "cubicIn"
+        },
+        {
+          "frame": 0.21666666666666667,
+          "value": -442,
+          "curve": "cubicOut"
+        },
+        {
+          "frame": 0.3333333333333333,
+          "value": -447
+        }
+      ]
+    }
+  },
+  "events": []
+}

@@ -1,0 +1,70 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "phone-appearence",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.2,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": -487,
+          "curve": "cubicIn"
+        },
+        {
+          "frame": 0.16666666666666666,
+          "value": 15
+        },
+        {
+          "frame": 0.2,
+          "value": 10
+        }
+      ]
+    },
+    "paths": {
+      "darken": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0.05,
+              "value": 0
+            },
+            {
+              "frame": 0.2,
+              "value": 200
+            }
+          ],
+          "y": [
+            {
+              "frame": 0,
+              "value": 488
+            },
+            {
+              "frame": 0.05,
+              "value": -12
+            }
+          ]
+        }
+      },
+      "ic_close": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.2,
+              "value": 255
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}
