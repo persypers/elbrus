@@ -14,6 +14,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+		this.node.on(cc.Node.EventType.TOUCH_START, this.onClick, this);
 		cc.dlg = this;
     },
 
@@ -53,7 +54,7 @@ cc.Class({
 					t = t();
 				}
 				if(this.dlg.topics[t] || t == 'end') {
-					choices.push(this.dlg.topics[t]);
+					choices.push(this.dlg.topics[t] || t);
 				}
 			}
 			seq.push(cc.callFunc(() => {
@@ -77,7 +78,9 @@ cc.Class({
 	},
 
 	chooseNext : function(topics) {
-		if(topics.length == 0) topics.push('end');
+		if(topics.length == 0) {
+			this.endDialog();
+		}
 		this.choiceBox.play(topics, (topic) => {
 			if(topic == 'end') {
 				this.endDialog();
@@ -106,9 +109,14 @@ cc.Class({
 		cc.l = label;
 		var align = npcTopic ? cc.RichText.HorizontalAlign.LEFT : cc.RichText.HorizontalAlign.RIGHT;
 		label.horizontalAlign = align;
-		seq.push(cc.typeAction(label, text, 0.03));
+		this._waitAction = cc.callFuncAsync(function(){});
+		seq.push(cc.race(
+			cc.typeAction(label, text, 0.03),
+			this._waitAction,
+		));
 		var waitAction = cc.callFuncAsync(function(){});
 		seq.push(cc.callFunc(() => {
+			label.string = text;
 			var node = new cc.Node();
 			node.width = label.node.width;
 			node.height = label.node.height;
@@ -117,7 +125,7 @@ cc.Class({
 			//this.scrollView.scrollToBottom(0.25);
 			utils.changeParentWithPosSaving(label.node, node);
 			label.node.runAction(cc.sequence([
-				cc.moveTo(0.75, 0, 0).easing(cc.easeCubicActionInOut()),
+				cc.moveTo(0.75, 0, -label.node.height * 0.5).easing(cc.easeCubicActionInOut()),
 				cc.callFunc(function(){
 					waitAction.complete();
 				})
@@ -126,4 +134,10 @@ cc.Class({
 		seq.push(waitAction);
 		return cc.sequence(seq);
 	},
+
+	onClick : function() {
+		if(this._waitAction) {
+			this._waitAction.complete();
+		}
+	}
 });

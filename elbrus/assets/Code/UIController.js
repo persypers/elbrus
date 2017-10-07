@@ -8,10 +8,19 @@ cc.Class({
             default : null,
             notify : function() {
                 if(this.activateTarget) {
+                    if(this._areaStack.indexOf(this.activateTarget) == -1) {
+                        this._areaStack.push(this.activateTarget);
+                    }
                     this.activateButton.node.active = true;
                     this.activateButton.getComponentInChildren(cc.Label).string = this.activateTarget.actionText;
                 } else {
-                    this.activateButton.node.active = false;
+                    if(this._areaStack.length <= 1) {
+                        this.activateButton.node.active = false;
+                        this._areaStack.length = 0;    
+                    } else {
+                        this._areaStack.length--;
+                        this.activateTarget = this._areaStack[this._areaStack.length-1];
+                    }
                 }
             }
         }
@@ -21,6 +30,7 @@ cc.Class({
     onLoad: function () {
         cc.ui = this;
         this.activateButton.node.active = false;
+        this._areaStack = [];
     },
 
     onActivate: function() {
