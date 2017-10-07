@@ -15,6 +15,7 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
 		this.node.on(cc.Node.EventType.TOUCH_START, this.onClick, this);
+		this.scrollView.node.on(cc.Node.EventType.TOUCH_START, this.onClick, this);
 		cc.dlg = this;
     },
 
@@ -37,8 +38,12 @@ cc.Class({
 		var anim = this.getComponent(cc.Animation);
 		anim.getAnimationState(anim.defaultClip.name).sample();
 		seq.push(cc.animate(anim, null, cc.WrapMode.Normal));
-		var npcTopic = !!(dlg.replies[dlg.start]);
-		var nextTopic = npcTopic && dlg.replies[dlg.start] || dlg.topics[dlg.start];
+		var nextTopic = dlg.start;
+		if(typeof(nextTopic) == 'function') {
+			nextTopic = nextTopic();
+		}
+		var npcTopic = !!(dlg.replies[nextTopic]);
+		nextTopic = dlg.replies[nextTopic] || dlg.topics[nextTopic];
 
 		seq.push(cc.callFunc(() => {
 			this.topicAction(nextTopic, npcTopic);
@@ -87,6 +92,7 @@ cc.Class({
 	chooseNext : function(topics) {
 		if(topics.length == 0) {
 			this.endDialog();
+			return;
 		}
 		this.choiceBox.play(topics, (topic) => {
 			if(topic == 'end') {
@@ -109,6 +115,9 @@ cc.Class({
 
 	textAction : function(text, npcTopic) {
 		var seq = [];
+		if(typeof(text) == 'function') {
+			text = text();
+		}
 		var label = cc.instantiate(this.appearLabel.node).getComponent(cc.RichText);
 		label.node.parent = this.appearLabel.node.parent;
 		label.string = "";
