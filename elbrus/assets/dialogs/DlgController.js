@@ -20,7 +20,14 @@ cc.Class({
 
 	playDialog : function(dlg, arg2) {
 		if(typeof(dlg) == 'string') {
-			dlg = require(dlg);
+			if(cc.scene && cc.scene[dlg]) {
+				dlg = cc.scene[dlg];
+			} else {
+				dlg = require(dlg);
+			}
+		}
+		if(typeof(dlg) == 'function') {
+			dlg = dlg();
 		}
 		this.dlg = dlg;
 		var seq = [];
