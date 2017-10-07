@@ -1,0 +1,75 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "LoadingDots",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 1.3333333333333333,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "paths": {
+      "dot1": {
+        "props": {
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 20,
+              "curve": [
+                0.3,
+                0.29,
+                0,
+                0.8
+              ]
+            },
+            {
+              "frame": 1.3333333333333333,
+              "value": 380
+            }
+          ]
+        }
+      },
+      "dot2": {
+        "props": {
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 10,
+              "curve": [
+                0.5,
+                0.5,
+                0,
+                0.7
+              ]
+            },
+            {
+              "frame": 1.3333333333333333,
+              "value": 370
+            }
+          ]
+        }
+      },
+      "dot3": {
+        "props": {
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 0,
+              "curve": [
+                0.7,
+                0.69,
+                0.01,
+                0.59
+              ]
+            },
+            {
+              "frame": 1.3333333333333333,
+              "value": 360
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

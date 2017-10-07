@@ -1,0 +1,99 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "dlgStart",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 1,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "fader": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.5,
+              "value": 91.8
+            }
+          ]
+        }
+      },
+      "tab": {
+        "props": {
+          "height": [
+            {
+              "frame": 0,
+              "value": 0,
+              "curve": "quintInOut"
+            },
+            {
+              "frame": 0.5,
+              "value": 700
+            }
+          ],
+          "width": [
+            {
+              "frame": 0.5,
+              "value": 1,
+              "curve": "quintInOut"
+            },
+            {
+              "frame": 1,
+              "value": 1000
+            }
+          ]
+        }
+      },
+      "leftChar": {
+        "props": {
+          "x": [
+            {
+              "frame": 0.25,
+              "value": -900,
+              "curve": "quintOut"
+            },
+            {
+              "frame": 0.75,
+              "value": -600
+            }
+          ]
+        }
+      },
+      "rightChar": {
+        "props": {
+          "x": [
+            {
+              "frame": 0.25,
+              "value": 900,
+              "curve": "quintOut"
+            },
+            {
+              "frame": 0.75,
+              "value": 600
+            }
+          ]
+        }
+      },
+      "scrollView/view/content": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0.5,
+              "value": 0
+            },
+            {
+              "frame": 1,
+              "value": 255
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

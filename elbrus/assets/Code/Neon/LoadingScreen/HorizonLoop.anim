@@ -1,0 +1,29 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "HorizonLoop",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 9,
+  "sample": 60,
+  "speed": 0.1,
+  "wrapMode": 2,
+  "curveData": {
+    "paths": {
+      "horizont": {
+        "props": {
+          "x": [
+            {
+              "frame": 0,
+              "value": 178
+            },
+            {
+              "frame": 9,
+              "value": -2532
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

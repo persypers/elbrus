@@ -1,0 +1,41 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "PopupAnim",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.3333333333333333,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": 438,
+          "curve": [
+            0.31,
+            0,
+            0.61,
+            1.26
+          ]
+        },
+        {
+          "frame": 0.3333333333333333,
+          "value": 0
+        }
+      ],
+      "opacity": [
+        {
+          "frame": 0.03333333333333333,
+          "value": 0
+        },
+        {
+          "frame": 0.25,
+          "value": 255
+        }
+      ]
+    }
+  },
+  "events": []
+}

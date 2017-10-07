@@ -1,0 +1,437 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "Hanging",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 10,
+  "sample": 60,
+  "speed": 0.1,
+  "wrapMode": 2,
+  "curveData": {
+    "paths": {
+      "horizont": {
+        "props": {
+          "x": [
+            {
+              "frame": 0,
+              "value": 157
+            },
+            {
+              "frame": 10,
+              "value": -2630
+            }
+          ]
+        }
+      },
+      "light_top": {
+        "props": {
+          "x": [
+            {
+              "frame": 0,
+              "value": 415,
+              "curve": [
+                0.2,
+                0.19,
+                0.7,
+                0.9
+              ]
+            },
+            {
+              "frame": 1,
+              "value": -1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 2,
+              "value": 1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 3,
+              "value": -1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 4,
+              "value": 1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 5,
+              "value": -1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 6,
+              "value": 1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 7,
+              "value": -1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 8,
+              "value": 1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 9,
+              "value": -1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 10,
+              "value": 1015
+            }
+          ]
+        }
+      },
+      "light_bottom": {
+        "props": {
+          "x": [
+            {
+              "frame": 0,
+              "value": -415,
+              "curve": [
+                0.19,
+                0.2,
+                0.7,
+                0.9
+              ]
+            },
+            {
+              "frame": 1,
+              "value": 1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 2,
+              "value": -1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 3,
+              "value": 1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 4,
+              "value": -1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 5,
+              "value": 1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 6,
+              "value": -1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 7,
+              "value": 1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 8,
+              "value": -1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 9,
+              "value": 1015,
+              "curve": "quadInOut"
+            },
+            {
+              "frame": 10,
+              "value": -1015
+            }
+          ]
+        }
+      },
+      "label": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 255,
+              "curve": [
+                0.18,
+                0.89,
+                0.31,
+                1.21
+              ]
+            },
+            {
+              "frame": 0.16666666666666666,
+              "value": 51,
+              "curve": [
+                0.4,
+                0.4,
+                0.6,
+                0.6
+              ]
+            },
+            {
+              "frame": 0.3333333333333333,
+              "value": 255
+            },
+            {
+              "frame": 0.5,
+              "value": 51
+            },
+            {
+              "frame": 0.6666666666666666,
+              "value": 255
+            },
+            {
+              "frame": 0.8333333333333334,
+              "value": 51
+            },
+            {
+              "frame": 1,
+              "value": 255
+            },
+            {
+              "frame": 1.1666666666666667,
+              "value": 51
+            },
+            {
+              "frame": 1.3333333333333333,
+              "value": 255
+            },
+            {
+              "frame": 1.5,
+              "value": 51
+            },
+            {
+              "frame": 1.6666666666666667,
+              "value": 255
+            },
+            {
+              "frame": 1.8333333333333333,
+              "value": 51
+            },
+            {
+              "frame": 2,
+              "value": 255
+            },
+            {
+              "frame": 2.1666666666666665,
+              "value": 51
+            },
+            {
+              "frame": 2.3333333333333335,
+              "value": 255
+            },
+            {
+              "frame": 2.5,
+              "value": 51
+            },
+            {
+              "frame": 2.6666666666666665,
+              "value": 255
+            },
+            {
+              "frame": 2.8333333333333335,
+              "value": 51
+            },
+            {
+              "frame": 3,
+              "value": 255
+            },
+            {
+              "frame": 3.1666666666666665,
+              "value": 51
+            },
+            {
+              "frame": 3.3333333333333335,
+              "value": 255
+            },
+            {
+              "frame": 3.5,
+              "value": 51
+            },
+            {
+              "frame": 3.6666666666666665,
+              "value": 255
+            },
+            {
+              "frame": 3.8333333333333335,
+              "value": 51
+            },
+            {
+              "frame": 4,
+              "value": 255
+            },
+            {
+              "frame": 4.166666666666667,
+              "value": 51
+            },
+            {
+              "frame": 4.166666666666667,
+              "value": 5
+            },
+            {
+              "frame": 4.166666666666667,
+              "value": 255
+            },
+            {
+              "frame": 4.333333333333333,
+              "value": 51
+            },
+            {
+              "frame": 4.5,
+              "value": 255
+            },
+            {
+              "frame": 4.666666666666667,
+              "value": 51
+            },
+            {
+              "frame": 4.833333333333333,
+              "value": 255
+            },
+            {
+              "frame": 5,
+              "value": 51
+            },
+            {
+              "frame": 5.166666666666667,
+              "value": 255
+            },
+            {
+              "frame": 5.333333333333333,
+              "value": 51
+            },
+            {
+              "frame": 5.5,
+              "value": 255
+            },
+            {
+              "frame": 5.666666666666667,
+              "value": 51
+            },
+            {
+              "frame": 5.833333333333333,
+              "value": 255
+            },
+            {
+              "frame": 6,
+              "value": 51
+            },
+            {
+              "frame": 6.166666666666667,
+              "value": 255
+            },
+            {
+              "frame": 6.333333333333333,
+              "value": 51
+            },
+            {
+              "frame": 6.5,
+              "value": 255
+            },
+            {
+              "frame": 6.666666666666667,
+              "value": 51
+            },
+            {
+              "frame": 6.833333333333333,
+              "value": 255
+            },
+            {
+              "frame": 7,
+              "value": 51
+            },
+            {
+              "frame": 7.166666666666667,
+              "value": 255
+            },
+            {
+              "frame": 7.333333333333333,
+              "value": 51
+            },
+            {
+              "frame": 7.5,
+              "value": 255
+            },
+            {
+              "frame": 7.666666666666667,
+              "value": 51
+            },
+            {
+              "frame": 7.833333333333333,
+              "value": 255
+            },
+            {
+              "frame": 8,
+              "value": 51
+            },
+            {
+              "frame": 8.166666666666666,
+              "value": 255
+            },
+            {
+              "frame": 8.333333333333334,
+              "value": 51
+            },
+            {
+              "frame": 8.333333333333334,
+              "value": 5
+            },
+            {
+              "frame": 8.333333333333334,
+              "value": 255
+            },
+            {
+              "frame": 8.5,
+              "value": 51
+            },
+            {
+              "frame": 8.666666666666666,
+              "value": 255
+            },
+            {
+              "frame": 8.833333333333334,
+              "value": 51
+            },
+            {
+              "frame": 9,
+              "value": 255
+            },
+            {
+              "frame": 9.166666666666666,
+              "value": 51
+            },
+            {
+              "frame": 9.333333333333334,
+              "value": 255
+            },
+            {
+              "frame": 9.5,
+              "value": 51
+            },
+            {
+              "frame": 9.666666666666666,
+              "value": 255
+            },
+            {
+              "frame": 9.833333333333334,
+              "value": 51
+            },
+            {
+              "frame": 10,
+              "value": 255
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}
