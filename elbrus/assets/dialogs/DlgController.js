@@ -14,12 +14,21 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+		this.node.on(cc.Node.EventType.TOUCH_START, this.onClick, this);
+		this.scrollView.node.on(cc.Node.EventType.TOUCH_START, this.onClick, this);
 		cc.dlg = this;
     },
 
 	playDialog : function(dlg, arg2) {
 		if(typeof(dlg) == 'string') {
-			dlg = require(dlg);
+			if(cc.scene && cc.scene[dlg]) {
+				dlg = cc.scene[dlg];
+			} else {
+				dlg = require(dlg);
+			}
+		}
+		if(typeof(dlg) == 'function') {
+			dlg = dlg();
 		}
 		this.dlg = dlg;
 		var seq = [];
@@ -29,8 +38,12 @@ cc.Class({
 		var anim = this.getComponent(cc.Animation);
 		anim.getAnimationState(anim.defaultClip.name).sample();
 		seq.push(cc.animate(anim, null, cc.WrapMode.Normal));
-		var npcTopic = !!(dlg.replies[dlg.start]);
-		var nextTopic = npcTopic && dlg.replies[dlg.start] || dlg.topics[dlg.start];
+		var nextTopic = dlg.start;
+		if(typeof(nextTopic) == 'function') {
+			nextTopic = nextTopic();
+		}
+		var npcTopic = !!(dlg.replies[nextTopic]);
+		nextTopic = dlg.replies[nextTopic] || dlg.topics[nextTopic];
 
 		seq.push(cc.callFunc(() => {
 			this.topicAction(nextTopic, npcTopic);
@@ -53,7 +66,7 @@ cc.Class({
 					t = t();
 				}
 				if(this.dlg.topics[t] || t == 'end') {
-					choices.push(this.dlg.topics[t]);
+					choices.push(this.dlg.topics[t] || t);
 				}
 			}
 			seq.push(cc.callFunc(() => {
@@ -77,7 +90,10 @@ cc.Class({
 	},
 
 	chooseNext : function(topics) {
-		if(topics.length == 0) topics.push('end');
+		if(topics.length == 0) {
+			this.endDialog();
+			return;
+		}
 		this.choiceBox.play(topics, (topic) => {
 			if(topic == 'end') {
 				this.endDialog();
@@ -99,6 +115,9 @@ cc.Class({
 
 	textAction : function(text, npcTopic) {
 		var seq = [];
+		if(typeof(text) == 'function') {
+			text = text();
+		}
 		var label = cc.instantiate(this.appearLabel.node).getComponent(cc.RichText);
 		label.node.parent = this.appearLabel.node.parent;
 		label.string = "";
@@ -106,9 +125,14 @@ cc.Class({
 		cc.l = label;
 		var align = npcTopic ? cc.RichText.HorizontalAlign.LEFT : cc.RichText.HorizontalAlign.RIGHT;
 		label.horizontalAlign = align;
-		seq.push(cc.typeAction(label, text, 0.03));
+		this._waitAction = cc.callFuncAsync(function(){});
+		seq.push(cc.race(
+			cc.typeAction(label, text, 0.03),
+			this._waitAction,
+		));
 		var waitAction = cc.callFuncAsync(function(){});
 		seq.push(cc.callFunc(() => {
+			label.string = text;
 			var node = new cc.Node();
 			node.width = label.node.width;
 			node.height = label.node.height;
@@ -117,7 +141,7 @@ cc.Class({
 			//this.scrollView.scrollToBottom(0.25);
 			utils.changeParentWithPosSaving(label.node, node);
 			label.node.runAction(cc.sequence([
-				cc.moveTo(0.75, 0, 0).easing(cc.easeCubicActionInOut()),
+				cc.moveTo(0.75, 0, -label.node.height * 0.5).easing(cc.easeCubicActionInOut()),
 				cc.callFunc(function(){
 					waitAction.complete();
 				})
@@ -126,4 +150,10 @@ cc.Class({
 		seq.push(waitAction);
 		return cc.sequence(seq);
 	},
+
+	onClick : function() {
+		if(this._waitAction) {
+			this._waitAction.complete();
+		}
+	}
 });

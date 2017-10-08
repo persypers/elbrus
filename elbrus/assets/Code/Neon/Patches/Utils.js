@@ -13,6 +13,8 @@ var eventTrap = function(event) {
 	event.stopPropagation();
 }
 
+Array.prototype.pickRandom = function() {return this[Math.floor(Math.random() * this.length)]}
+
 /**
  * That callback will be called when view port size changed.
  * That callback is one for application.

@@ -13,7 +13,7 @@ cc.Class({
 		if(this.highlight) {
 			this.highlight.fadeIn();
 		}
-		cc.ui.activateTarget = this;
+		cc.ui.addActiveArea(this);
 	},
 
 	activate : function() {
@@ -35,9 +35,7 @@ cc.Class({
 		if(this.highlight) {
 			this.highlight.fadeOut();
 		}
-		if(cc.ui.activateTarget == this) {
-			cc.ui.activateTarget = null;
-		}
+		cc.ui.removeActiveArea(this);
 	}
 
 });

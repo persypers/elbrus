@@ -1,3 +1,5 @@
+var player = require('player');
+
 var ySpeed = 150;
 var xSpeed = 200;
 
@@ -23,10 +25,12 @@ cc.Class({
 		var manager = cc.director.getCollisionManager();
 		manager.enabled = true;
 		this._obstacles = [];
-		cc.w = this;
+		cc.playerNode = this.node;
+		player.textField = this.getComponentInChildren('TextField');
     },
 
 	onDestroy : function() {
+		delete cc.playerNode;
 		cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyEvent);
 		cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyEvent);
 	},

@@ -31,6 +31,7 @@ cc.Class({
 			duration = DEFAULT_DURATION;
 		}
 		this.label.string = '';
+		this.node.opacity = 255;
 		this.node.active = true;
 		this.node.stopAllActions;
 		this.node.runAction(cc.sequence(
@@ -38,6 +39,7 @@ cc.Class({
 				cc.typeAction(this.label, text, 0.02),
 				cc.delayTime(duration),
 			),
+			cc.fadeOut(0.5),
 			cc.callFunc(() => {
 				this.node.active = false;
 			})
