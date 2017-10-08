@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "f36ca436-ffb1-4dcb-99ba-155b536198fb",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "park_enterence": {
+      "ver": "1.0.3",
+      "uuid": "fa1cf4e7-82a5-4310-9cd9-112030a1f54e",
+      "rawTextureUuid": "f36ca436-ffb1-4dcb-99ba-155b536198fb",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 193,
+      "height": 603,
+      "rawWidth": 193,
+      "rawHeight": 603,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
