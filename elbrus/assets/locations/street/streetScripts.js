@@ -138,6 +138,31 @@ cc.Class({
         }
     },
 
+    parkEnter : function() {
+        return {
+            start : 'start',
+            replies : {
+                start : {
+                    text : 'Арка повествует о том, что не некий меценат огранизовал парк для своих любимых сограждан.',
+                    topics : ['enter', 'end'],
+                },
+                jump_reply : {
+                    text : 'Перепрыгнув одну лужу, вы случайно наступаете в другу. Зато вы в парке.',
+                    script : ()=>{cc.playerNode.destroy()},
+                }
+            },
+            topics : {
+                enter : {
+                    text : 'Войти в парк в поисках просветления.',
+                    reply : 'jump_reply',
+                },
+                end : {
+                    text : 'Остаться на здесь.'
+                }
+            }
+        }
+    },
+
     kitchen : function() {
         return {
             start : 'start',
