@@ -15,13 +15,28 @@ cc.Class({
 			this.label = this.getComponent(cc.Label);
 		}
 		cc.textFields[this.node.name] = this;
+		this._speechQueue = [];
     },
 
 	onDestroy : function() {
 		delete cc.textFields[this.node.name];
 	},
 
-	show : function(text, duration) {
+	say : function(msg) {
+		if(this.node.active) {
+			this._speechQueue.push(msg);
+		} else {
+			var text = msg.text && msg.text || msg;
+			this.show(text, msg.duration, ()=>{
+				var msg = this._speechQueue.shift();
+				if(msg) {
+					this.say(msg);
+				}
+			});
+		}
+	},
+
+	show : function(text, duration, onDone) {
 		if(this.node.active) return;
 		if(typeof(text) == 'object' && text instanceof cc.Event) {
 			text = duration;
@@ -42,6 +57,9 @@ cc.Class({
 			cc.fadeOut(0.5),
 			cc.callFunc(() => {
 				this.node.active = false;
+				if(typeof(onDone) == 'function') {
+					onDone();
+				}
 			})
 		));
 	}

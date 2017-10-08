@@ -47,6 +47,16 @@
               "frame": 0.05,
               "value": -12
             }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 0.016666666666666666,
+              "value": true
+            }
           ]
         }
       },

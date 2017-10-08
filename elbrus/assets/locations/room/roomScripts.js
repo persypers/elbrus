@@ -14,12 +14,13 @@ cc.Class({
     behindBed : function() {
         if(!this._behindBed) {
             this._behindBed = true;
-            player.textField.show('О, монетка!');
+			player.textField.show('О, монетка!');
         }        
     },
 
     room_window_dlg : function() {
         return {
+			npcSprite : ()=>cc.find('window/Window', cc.scene.node).getComponent(cc.Sprite).spriteFrame,
             start : 'start',
             replies : {
                 start : {
@@ -53,7 +54,8 @@ cc.Class({
 
     bedDialog : function() {
         return {
-            start : 'start',
+			npcSprite : ()=>cc.find('bed/bed', cc.scene.node).getComponent(cc.Sprite).spriteFrame,
+			start : 'start',
             replies : {
                 start : {
                     text : 'Старая скрипучая тахта, сойдёт для одиночки',
@@ -84,7 +86,8 @@ cc.Class({
 
     kitchen : function() {
         return {
-            start : 'start',
+			npcSprite : ()=>cc.find('food/food', cc.scene.node).getComponent(cc.Sprite).spriteFrame,
+			start : 'start',
             replies : {
                 start : {
                     text : () =>
@@ -126,7 +129,8 @@ cc.Class({
             'end'
         ]
         return {
-            start : () => {
+			npcSprite : ()=>cc.find('notebook/Note', cc.scene.node).getComponent(cc.Sprite).spriteFrame,
+			start : () => {
                 if(player.pages == 0) return 'firstStart';
                 if(player.pages < 40) return 'startLow';
                 if(player.pages < 60) return 'startMed';
