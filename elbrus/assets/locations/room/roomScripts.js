@@ -62,11 +62,17 @@ cc.Class({
                     topics : ['sleep', 'rest', 'end'],
                 },
                 sleep_reply : {
-                    text : 'Здоровый сон восстанавливает вам силы.',
+					text : 'Здоровый сон восстанавливает вам силы.',
+					script : () => {
+						cc.eventLoop.time += 60 * 6
+					}
                 },
                 rest_reply : {
                     text : 'Это у вас получается хорошо.',
-                },
+					script : () => {
+						cc.eventLoop.time += 30;
+					}
+				},
             },
             topics : {
                 sleep : {
@@ -98,13 +104,15 @@ cc.Class({
                 fresh : {
                     text : () => 'Вы приготовили ' + ['рагу', 'суп', 'котлеты', "пирог", "омлет", "плов"].pickRandom() + '.',
                     script : ()=>{
-                        player.staleFoodOnKitchen = true
+						player.staleFoodOnKitchen = true
+						cc.eventLoop.time += 60;
                     },
                 },
                 stale : {
                     text : 'Вчерашняя еда. Иногда нужно прикоснуться к своему прошлому, чтобы шагнуть в будующее.',
                     script : () => {
-                        player.staleFoodOnKitchen = false;
+						player.staleFoodOnKitchen = false;
+						cc.eventLoop.time += 15;
                     }
                 },
             },
