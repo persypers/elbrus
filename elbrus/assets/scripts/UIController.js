@@ -41,7 +41,7 @@ cc.Class({
     },
 
     onActivate: function() {
-        if(this.activateTarget) {
+        if(this.activateTarget && !cc.player.isBusy) {
             this.activateTarget.activate();
         }
     }

@@ -17,17 +17,13 @@ cc.Class({
 	},
 
 	activate : function() {
-		var script = null;
-		try {
-				script = require(this.script);
-		} catch (e) {};
-		if(script) {
-				script(this);
+		if(this.script) {
+			cc.scene[this.script]();
 		} else if(this.dialog) {
-				cc.director.getScene().getComponentInChildren('DlgController').playDialog(this.dialog);
+			cc.director.getScene().getComponentInChildren('DlgController').playDialog(this.dialog);
 		} else if(this.handler) {
-				var comp = this.handler.target.getComponent(this.handler.component);
-				comp[this.handler.handler].call(comp, this.handler.customEventData);
+			var comp = this.handler.target.getComponent(this.handler.component);
+			comp[this.handler.handler].call(comp, this.handler.customEventData);
 		}
 },
 	

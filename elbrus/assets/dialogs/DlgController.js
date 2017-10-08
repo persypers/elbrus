@@ -31,6 +31,7 @@ cc.Class({
 			dlg = dlg();
 		}
 		this.dlg = dlg;
+		cc.player.isBusy = true;
 		if(dlg.npcSprite) {
 			var sf = dlg.npcSprite;
 			if(typeof(sf == 'function')) sf = sf();
@@ -57,11 +58,11 @@ cc.Class({
 	},
 
 	topicAction : function(topic, npcTopic) {
-		if(typeof(topic.script) == 'function') topic.script();
 		var seq = [];
 		var choices;
 		seq.push(this.textAction(topic.text, npcTopic));
-		
+		if(typeof(topic.script) == 'function') seq.push(cc.callFunc(topic.script));
+
 		if(npcTopic) {
 			choices = [];
 			var count = topic.topics && topic.topics.length;
@@ -109,6 +110,7 @@ cc.Class({
 	},
 
 	endDialog : function() {
+		cc.player.isBusy = false;
 		var seq = [];
 		var anim = this.getComponent(cc.Animation);
 		seq.push(cc.animate(anim, null, cc.WrapMode.Reverse));

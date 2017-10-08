@@ -18,6 +18,11 @@ cc.Class({
         }        
     },
 
+	doorScript : function() {
+		cc.controller.switchScene('street_basic', 'room_enterance/enter_trigger');
+		cc.eventLoop.time += 5;
+	},
+
     room_window_dlg : function() {
         return {
 			npcSprite : ()=>cc.find('window/Window', cc.scene.node).getComponent(cc.Sprite).spriteFrame,
@@ -29,7 +34,10 @@ cc.Class({
                 },
                 jump_reply : {
                     text : 'Взобравшись на подоконник, вы в последний раз оглядели своё печальное жилище и шагнули в нежные объятия неизвестности.',
-                    script : ()=>{cc.playerNode.destroy()},
+                    script : ()=>{
+						cc.playerNode.destroy()
+						setTimeout(()=>{cc.controller.switchScene('street_basic', 'coin')}, 5000);
+					},
                 },
                 watch_reply : {
                     text : 'Некоторое время вы наблюдаете за уличной суетой. Вам не становится сильно легче.',

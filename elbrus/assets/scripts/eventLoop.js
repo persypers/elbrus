@@ -35,8 +35,6 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         cc.eventLoop = this;
-		utils.changeParentWithPosSaving(this.node, this.node.parent.parent);
-		cc.game.addPersistRootNode(this.node);
         setInterval(()=>{this.time++}, 1000);
         this._events = [];
     },

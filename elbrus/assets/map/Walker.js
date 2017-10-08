@@ -36,9 +36,12 @@ cc.Class({
 	},
 
 	onKeyEvent : function(eventData) {
+
 		var dAxis = axisControls[eventData.keyCode];
-		if(dAxis) {
+		if(dAxis && !(cc.player.isBusy)) {
 			dAxis.state = (eventData.type == cc.SystemEvent.EventType.KEY_DOWN) ? 1 : 0;
+		} else if(eventData.keyCode == cc.KEY.space) {
+			cc.ui.onActivate();
 		}
 	},
 
