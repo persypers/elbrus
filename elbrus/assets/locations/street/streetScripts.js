@@ -11,45 +11,13 @@ cc.Class({
         cc.scene = this;
     },
 
-    suicideFail : function() {
-        if(!this._suicideFail) {
-            this._suicideFail = true;
-            player.textField.show('Это первый этаж. Сомнительная затея.');
-        }        
-    },
-
-    room_window_dlg : function() {
-        return {
-            start : 'start',
-            replies : {
-                start : {
-                    text : 'Мелкие капли дождя скатываются по стеклу в никуда.',
-                    topics : ['watch', 'end', 'jump'],
-                },
-                jump_reply : {
-                    text : 'Взобравшись на подоконник, вы в последний раз оглядели своё печальное жилище и шагнули в нежные объятия неизвестности.',
-                    script : ()=>{cc.playerNode.destroy()},
-                },
-                watch_reply : {
-                    text : 'Некоторое время вы наблюдаете за уличной суетой. Вам не становится сильно легче.',
-                    topics : ['watch', 'end', 'jump'],
-                },
-            },
-            topics : {
-                jump : {
-                    text : 'Выброситься из окна',
-                    reply : 'jump_reply',
-                },
-                watch : {
-                    text : 'Созерцать мир за окном',
-                    reply : 'watch_reply',
-                },
-                end : {
-                    text : 'Вернуться в насущным проблемам'
-                }
-            }
-        }
-    },
+	start : function() {
+		if(player.jumpedWindow) {
+			player.jumpedWindow = false;
+			cc.eventLoop.push({time : 1, handler : ()=>{cc.player.say('Это первый этаж. Сомнительная затея.')}})
+		}
+		cc.controller.getComponent(cc.AudioSource).play();
+	},
 
     Room_enter : function() {
         return {
@@ -60,7 +28,11 @@ cc.Class({
                     topics : ['enter', 'end'],
                 },
                 enter_reply : {
-                    text : 'Здоровый сон восстанавливает вам силы.',
+					text : 'Дом, милый дом.',
+					script: ()=>{
+						cc.controller.switchScene('room_basic', 'door/entry');
+						cc.eventLoop.time += 5;
+					}
                 }
             },
             topics : {
@@ -89,7 +61,11 @@ cc.Class({
                 },
                 enter_reply : {
                     text : 'Размазывая ботинками грязь, вы залезаете в свою комнату . В процессе вас не покидает вопрос "Зачем?".',
-                }
+					script: ()=>{
+						cc.controller.switchScene('room_basic', 'window/entry');
+						cc.eventLoop.time += 20;
+					}
+				}
             },
             topics : {
                 inspect : {
@@ -148,7 +124,10 @@ cc.Class({
                 },
                 jump_reply : {
                     text : 'Перепрыгнув одну лужу, вы случайно наступаете в другу. Зато вы в парке.',
-                    script : ()=>{cc.playerNode.destroy()},
+                    script : ()=>{
+						cc.controller.switchScene('park_basic', 'park_enterance1/entry');
+						cc.eventLoop.time += 60;
+					},
                 }
             },
             topics : {

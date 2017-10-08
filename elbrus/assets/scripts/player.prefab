@@ -177,7 +177,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "34a8f3fd-06d7-4bb5-b100-c0f2c9aba9a6"
     },
     "fileId": "38e7c8f2tRCt47EVrWJruL3",
     "sync": false
@@ -271,7 +271,7 @@
     "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_N$string": "Label",
-    "_N$horizontalAlign": 0,
+    "_N$horizontalAlign": 1,
     "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
     "_N$overflow": 3
@@ -299,7 +299,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "34a8f3fd-06d7-4bb5-b100-c0f2c9aba9a6"
     },
     "fileId": "1e9e3U6WRtMiICBRCaaFuXT",
     "sync": false
@@ -343,7 +343,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "34a8f3fd-06d7-4bb5-b100-c0f2c9aba9a6"
     },
     "fileId": "a1988+F/cJNgrKXF/tctvFg",
     "sync": false

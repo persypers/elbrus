@@ -36,6 +36,8 @@ cc.Class({
 			var sf = dlg.npcSprite;
 			if(typeof(sf == 'function')) sf = sf();
 			this.leftChar.spriteFrame = sf;
+		} else {
+			this.leftChar.spriteFrame = null;
 		}
 		var seq = [];
 		this.choiceBox.node.active = false;

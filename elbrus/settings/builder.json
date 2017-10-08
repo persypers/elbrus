@@ -3,13 +3,11 @@
   "appSecret": "",
   "excludeScenes": [],
   "includeAnySDK": false,
-  "includeSDKBox": false,
   "includeSdk": [
     "anysdk"
   ],
   "inlineSpriteFrames": true,
   "inlineSpriteFrames_native": true,
-  "md5Cache": false,
   "mergeStartScene": false,
   "oauthLoginServer": "",
   "optimizeHotUpdate": false,
@@ -22,7 +20,7 @@
   "packageName": "org.cocos2d.helloworld",
   "privateKey": "",
   "renderMode": "0",
-  "startScene": "1f482653-6fe1-491d-bdbf-5261b39fa282",
+  "startScene": "d6f02a81-679c-4321-9b59-fe859fba3a4f",
   "title": "Dreadline",
   "webOrientation": "auto"
 }

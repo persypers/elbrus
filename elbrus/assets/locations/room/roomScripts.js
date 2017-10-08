@@ -36,7 +36,8 @@ cc.Class({
                     text : 'Взобравшись на подоконник, вы в последний раз оглядели своё печальное жилище и шагнули в нежные объятия неизвестности.',
                     script : ()=>{
 						cc.playerNode.destroy()
-						setTimeout(()=>{cc.controller.switchScene('street_basic', 'coin')}, 5000);
+						cc.player.jumpedWindow = true;
+						setTimeout(()=>{cc.controller.switchScene('street_basic', 'Window_street/window_trigger')}, 5000);
 					},
                 },
                 watch_reply : {
@@ -142,11 +143,11 @@ cc.Class({
 
     notebook : function() {
         var hub = [
-            'end'
+			'end',
+			()=>player.currentIdea ? 'wright' : 'end_no_idea',
         ]
         return {
-			npcSprite : ()=>cc.find('notebook/Note', cc.scene.node).getComponent(cc.Sprite).spriteFrame,
-			start : () => {
+            start : () => {
                 if(player.pages == 0) return 'firstStart';
                 if(player.pages < 40) return 'startLow';
                 if(player.pages < 60) return 'startMed';
@@ -157,36 +158,58 @@ cc.Class({
             replies : {
                 firstStart : {
                     text : 'Ваш компьютер. Белизна открытого пустого документа "диплом.doc" режет вам глаза.',
-                    topics : hub,
+                    topics : hub
                 },
                 startLow : {
                     text : () => 'Да тут ещё конь не валялся! Только ' + player.pages + ' страниц из необходимых 100',
-                    topics : hub,
+                    topics : hub
                 },
                 startMed : {
                     text : () => 'Что-то уже написано, но работы ещё непочатый край. ' + player.pages + ' из 100 страниц.',
-                    topics : hub,
+                    topics : hub
                 },
                 startHigh : {
                     text : () => 'Стоит поднажать, кажется ещё можно успеть. ' + player.pages + ' из 100 необходимых страниц.',
-                    topics : hub,
+                    topics : hub
                 },
                 startAlmost : {
                     text : () => 'Вы почти у цели, осталось всего ' + (100 - player.pages) + ' страниц!',
-                    topics : hub,
+                    topics : hub
                 },
                 startDone : {
                     text : 'Вот оно. Ваша дипломная работа наконец закончена. Теперь нужно распечатать её, одно из требований комиссии - предоставить твёрдую копию работы.',
                     topics : 'copy',
                 },
-            },
+				end_no_idea : {
+					text : 'В голову совсем ничего не приходит. Какое-то время вы усиленно пялитесь в монитор, но потом ловите себя на просмтора ' + ['летсплеев ', 'стримов ', 'прохождений '].pickRandom() + ['World of Tanks', 'League of Legends', 'World of Warcraft'].pickRandom(),
+					script : ()=>{
+						player.stress = false;
+						cc.eventLoop.time += Math.floor(Math.random() * 120 + 120);
+					}
+				},
+			},
             topics : {
+                wright : {
+                    text : 'Записать идею, которая крутилась у вас в голове',
+                    script : () => {
+                        player.currentIdea = false;
+                        player.pages = player.pages + player.stress ? 5 : 0;
+                        player.stress = true;
+						player.ideasUsed = player.ideasUsed + 1;
+						cc.eventLoop.time += 120;
+                    },
+                    reply : 'start'
+                },
                 copy : {
                     text : 'Доесть недоедки',
                 },
                 end : {
                     text : 'Не сейчас, у меня ещё достаточно времени'
-                }
+				},
+				end_no_idea : {
+					text : 'Попытаться сконцентрирваться на дипломе',
+					reply : 'end_no_idea',
+				},				
             }
         }
     },

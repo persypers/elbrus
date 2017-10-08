@@ -14,18 +14,18 @@ cc.Class({
                     this.activateButton.node.active = false;
                 }
             }
-        }
+		},
     },
 
     // use this for initialization
     onLoad: function () {
         cc.ui = this;
-        this.activateButton.node.active = false;
+		this.activateButton.node.active = false;
         this._areaStack = [];
     },
 
     addActiveArea : function(area) {
-        var index = this._areaStack.indexOf(area);
+		var index = this._areaStack.indexOf(area);
         if(index == -1) {
             this._areaStack.push(area);
         }
