@@ -79,8 +79,8 @@ cc.Class({
 		} else {
 			this.anim.stop();
 		}
-		dx *= dt * xSpeed;
-		dy *= dt * ySpeed;
+		dx *= dt * cc.player.xSpeed;
+		dy *= dt * cc.player.ySpeed;
 		if(this._obstacles.length == 0) {
 			this._prevX = this.node.x;
 			this._prevY = this.node.y;

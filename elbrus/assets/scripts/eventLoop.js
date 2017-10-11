@@ -20,11 +20,12 @@ cc.Class({
                     for(var i = events.length - 1; i >= 0; i--) {
                         var e = events[i];
                         e.time -= dt;
-                        if(e.time <= 0) {
+                        if(e.time <= 0 && !cc.player.isBusy) {
                             events.splice(i, 1);
                             e.handler();
                         }
                     }
+					this.dt = dt;
                     cc.systemEvent.emit('tick', dt);
                 }
             }
@@ -35,12 +36,19 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         cc.eventLoop = this;
-        setInterval(()=>{this.time++}, 1000);
+        setInterval(()=>{this.time++}, 100);
         this._events = [];
     },
 
     push : function(event) {
-        this._events.push(event);
-    }
+        if(typeof(event.time) == 'function') event.time = event.time();
+		this._events.push(event);
+    },
 
+	cancel : function(event) {
+		var index = this._events.indexOf(event);
+		if(index != -1) {
+			this._events.splice(index, 1);
+		}
+	}
 });

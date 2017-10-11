@@ -1,4 +1,7 @@
 var utils = require('Utils');
+var player = require('player');
+var hunger = require('Hunger');
+var fatigue = require('Fatigue');
 
 cc.Class({
     extends: cc.Component,
@@ -15,7 +18,7 @@ cc.Class({
 		cc.controller = this;
     },
 
-	switchScene : function(scene, entryPoint) {
+	switchScene : function(scene, entryPoint, onDone) {
 		var wait = cc.callFuncAsync(()=>{});
 		var seq = [
 			cc.animate(this.fader, null, cc.WrapMode.Normal),
@@ -30,6 +33,9 @@ cc.Class({
 						utils.changeParentWithPosSaving(player, cc.scene.node);
 					}
 					wait.complete();
+					if(typeof(onDone) == 'function'){
+						onDone();
+					}
 				});
 			}, this),
 			wait,
@@ -45,10 +51,27 @@ cc.Class({
 		}
 
 		cc.eventLoop.push({time : 24 * 60 * 3, handler : ()=>{cc.controller.switchScene('end_screen')}});
+
+		cc.systemEvent.on('tick', function(eventData, customData){
+			var dt = cc.eventLoop.dt;
+
+			player.hunger += dt;
+			player.fatigue += dt;
+			player.stress += dt;
+
+			if(player.hunger < 0) player.hunger = 0;
+			if(player.fatigue < 0) player.fatigue = 0;
+			if(player.stress < 0) player.stress = 0;
+
+			hunger.update();
+			fatigue.update();
+		});
 	},
 
 	onStart : function() {
-		this.switchScene('room_basic', 'bed/entry');
+		this.switchScene('room_basic', 'bed/entry', ()=>{
+			player.isBusy = false;
+		});
 	}
 });
 
