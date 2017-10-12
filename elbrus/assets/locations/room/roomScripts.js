@@ -68,15 +68,17 @@ cc.Class({
             replies : {
                 start : {
                     text : 'Старая скрипучая тахта, сойдёт для одиночки',
-                    topics : ['sleep', 'rest', 'end'],
+                    topics : ['sleep8', 'sleep4', 'rest', 'end'],
                 },
-                sleep_reply : {
-					text : 'Здоровый сон восстанавливает вам силы.',
-					script : () => {
-						cc.eventLoop.time += 60 * 6
-					}
+                sleep8_reply : {
+					text : 'Вы заводите будильник через 8 часов и ложитесь спать.',
+					script : player.fatigue.sleep8,
                 },
-                rest_reply : {
+                sleep4_reply : {
+					text : 'Вы заводите будильник через 4 часа и ложитесь спать.',
+					script : player.fatigue.sleep4,
+                },
+				rest_reply : {
                     text : 'Это у вас получается хорошо.',
 					script : () => {
 						cc.eventLoop.time += 30;
@@ -84,12 +86,16 @@ cc.Class({
 				},
             },
             topics : {
-                sleep : {
-                    text : 'Спать',
-                    reply : 'sleep_reply',
+                sleep8 : {
+                    text : 'Спать 8 часов',
+					reply : 'sleep8_reply',
                 },
-                rest : {
-                    text : 'Поваляться',
+                sleep4 : {
+                    text : 'Спать 4 часа',
+					reply : 'sleep4_reply',
+                },
+				rest : {
+                    text : 'Просто поваляться',
                     reply : 'rest_reply',
                 },
                 end : {
@@ -112,18 +118,12 @@ cc.Class({
                 },
                 fresh : {
                     text : () => 'Вы приготовили ' + ['рагу', 'суп', 'котлеты', "пирог", "омлет", "плов"].pickRandom() + '.',
-                    script : ()=>{
-						player.staleFoodOnKitchen = true
-						cc.eventLoop.time += 60;
-                    },
+                    script : player.hunger.eatFresh,
                 },
                 stale : {
-                    text : 'Вчерашняя еда. Иногда нужно прикоснуться к своему прошлому, чтобы шагнуть в будующее.',
-                    script : () => {
-						player.staleFoodOnKitchen = false;
-						cc.eventLoop.time += 15;
-                    }
-                },
+                    text : 'Вы разогреваете и доедаете вчерашнюю еду.',
+					script : player.hunger.eatStale,
+				},
             },
             topics : {
                 fresh : {
@@ -141,78 +141,6 @@ cc.Class({
         }
     },
 
-    notebook : function() {
-        var hub = [
-			'end',
-			()=>player.currentIdea ? 'wright' : 'end_no_idea',
-        ]
-        return {
-            start : () => {
-                if(player.pages == 0) return 'firstStart';
-                if(player.pages < 40) return 'startLow';
-                if(player.pages < 60) return 'startMed';
-                if(player.pages < 90) return 'startHigh';
-                if(player.pages <100) return 'startAlmost';
-                return 'startDone';
-            },
-            replies : {
-                firstStart : {
-                    text : 'Ваш компьютер. Белизна открытого пустого документа "диплом.doc" режет вам глаза.',
-                    topics : hub
-                },
-                startLow : {
-                    text : () => 'Да тут ещё конь не валялся! Только ' + player.pages + ' страниц из необходимых 100',
-                    topics : hub
-                },
-                startMed : {
-                    text : () => 'Что-то уже написано, но работы ещё непочатый край. ' + player.pages + ' из 100 страниц.',
-                    topics : hub
-                },
-                startHigh : {
-                    text : () => 'Стоит поднажать, кажется ещё можно успеть. ' + player.pages + ' из 100 необходимых страниц.',
-                    topics : hub
-                },
-                startAlmost : {
-                    text : () => 'Вы почти у цели, осталось всего ' + (100 - player.pages) + ' страниц!',
-                    topics : hub
-                },
-                startDone : {
-                    text : 'Вот оно. Ваша дипломная работа наконец закончена. Теперь нужно распечатать её, одно из требований комиссии - предоставить твёрдую копию работы.',
-                    topics : 'copy',
-                },
-				end_no_idea : {
-					text : 'В голову совсем ничего не приходит. Какое-то время вы усиленно пялитесь в монитор, но потом ловите себя на просмтора ' + ['летсплеев ', 'стримов ', 'прохождений '].pickRandom() + ['World of Tanks', 'League of Legends', 'World of Warcraft'].pickRandom(),
-					script : ()=>{
-						player.stress = false;
-						cc.eventLoop.time += Math.floor(Math.random() * 120 + 120);
-					}
-				},
-			},
-            topics : {
-                wright : {
-                    text : 'Записать идею, которая крутилась у вас в голове',
-                    script : () => {
-                        player.currentIdea = false;
-                        player.pages = player.pages + player.stress ? 5 : 0;
-                        player.stress = true;
-						player.ideasUsed = player.ideasUsed + 1;
-						cc.eventLoop.time += 120;
-                    },
-                    reply : 'start'
-                },
-                copy : {
-                    text : 'Доесть недоедки',
-                },
-                end : {
-                    text : 'Не сейчас, у меня ещё достаточно времени'
-				},
-				end_no_idea : {
-					text : 'Попытаться сконцентрирваться на дипломе',
-					reply : 'end_no_idea',
-				},				
-            }
-        }
-    },
-
+    notebook : require('notebookDlg'),
 });
 

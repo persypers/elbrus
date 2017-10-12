@@ -1,4 +1,4 @@
-var HUNGER_NONE = 6 * 6;
+var HUNGER_NONE = 6 * 60;
 var HUNGER_LOW = 12 * 60;
 var HUNGER_STARVE = 24 * 60;
 
@@ -78,10 +78,12 @@ var states = [
 ]
 
 module.exports = {
+	value : 0,
 	state : 0,
-	update : function() {
+	update : function(dt) {
+		this.value += dt;
 		var _prevState = this.state;
-		for(var i = 0; i < states.length - 1 && cc.player.hunger >= states[i].maxHunger; i++);
+		for(var i = 0; i < states.length - 1 && this.value >= states[i].maxHunger; i++);
 		if(_prevState != i) {
 			if(nextEvent) {
 				cc.eventLoop.cancel(nextEvent);
@@ -99,5 +101,19 @@ module.exports = {
 			cc.eventLoop.push(nextEvent);
 		}
 		this.state = i;
-	}
+	},
+
+	eatFresh : () => {
+		cc.player.staleFoodOnKitchen = true;
+		cc.player.hunger.value = 0;
+		cc.eventLoop.time += 60;
+		return ('Было вкусно.');
+	},
+
+	eatStale : () => {
+		cc.player.staleFoodOnKitchen = false;
+		cc.player.hunger.value = Math.max(0, cc.player.hunger.value - 60 * 10);
+		cc.eventLoop.time += 15;
+		return  'Иногда нужно прикоснуться к своему прошлому, чтобы шагнуть в будующее.';
+	},
 }

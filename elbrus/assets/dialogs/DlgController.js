@@ -63,7 +63,19 @@ cc.Class({
 		var seq = [];
 		var choices;
 		seq.push(this.textAction(topic.text, npcTopic));
-		if(typeof(topic.script) == 'function') seq.push(cc.callFunc(topic.script));
+		if(typeof(topic.script) == 'function') {
+			seq.push(cc.callFuncAsync((asyncAction)=> {
+				var addText = topic.script();
+				if(addText) {
+					this.node.runAction(cc.sequence(
+						this.textAction(addText, true),
+						cc.callFunc(asyncAction.complete.bind(asyncAction))
+					));
+				} else {
+					asyncAction.complete();
+				}
+			}));
+		}
 
 		if(npcTopic) {
 			choices = [];

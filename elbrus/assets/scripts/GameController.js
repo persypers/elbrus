@@ -3,6 +3,8 @@ var player = require('player');
 var hunger = require('Hunger');
 var fatigue = require('Fatigue');
 
+var MAX_TIME = cc.MAX_TIME = 72 * 60;
+
 cc.Class({
     extends: cc.Component,
 
@@ -50,21 +52,17 @@ cc.Class({
 			cc.eventLoop.push({time : msg.time, handler : ()=>{cc.phone.pushMessage(msg)}});
 		}
 
-		cc.eventLoop.push({time : 24 * 60 * 3, handler : ()=>{cc.controller.switchScene('end_screen')}});
+		cc.eventLoop.push({time : MAX_TIME, handler : ()=>{cc.controller.switchScene('end_screen')}});
 
 		cc.systemEvent.on('tick', function(eventData, customData){
 			var dt = cc.eventLoop.dt;
 
-			player.hunger += dt;
-			player.fatigue += dt;
 			player.stress += dt;
 
-			if(player.hunger < 0) player.hunger = 0;
-			if(player.fatigue < 0) player.fatigue = 0;
 			if(player.stress < 0) player.stress = 0;
 
-			hunger.update();
-			fatigue.update();
+			hunger.update(dt);
+			fatigue.update(dt);
 		});
 	},
 

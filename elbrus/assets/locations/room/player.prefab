@@ -210,9 +210,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 38,
-      "g": 55,
-      "b": 109,
+      "r": 29,
+      "g": 43,
+      "b": 85,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -224,12 +224,12 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 200,
-      "height": 24
+      "height": 40
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 1,
-    "_scaleY": 1,
+    "_scaleX": 0.5,
+    "_scaleY": 0.5,
     "_position": {
       "__type__": "cc.Vec2",
       "x": -13,
@@ -263,14 +263,14 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 24,
-    "_fontSize": 16,
-    "_lineHeight": 16,
+    "_actualFontSize": 32,
+    "_fontSize": 32,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Label",
+    "_N$string": "",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",

@@ -1,4 +1,4 @@
-var FATIGUE_NONE = 12 * 6;
+var FATIGUE_NONE = 12 * 60;
 var FATIGUE_TIRED = 18 * 60;
 var FATIGUE_DEPRIVED = 24 * 60;
 
@@ -71,10 +71,12 @@ var states = [
 ]
 
 module.exports = {
+	value : 0,
 	state : 0,
-	update : function() {
+	update : function(dt) {
+		this.value += dt;
 		var _prevState = this.state;
-		for(var i = 0; i < states.length - 1 && cc.player.fatigue >= states[i].maxHunger; i++);
+		for(var i = 0; i < states.length - 1 && this.value >= states[i].maxHunger; i++);
 		if(_prevState != i) {
 			if(nextEvent) {
 				cc.eventLoop.cancel(nextEvent);
@@ -92,5 +94,34 @@ module.exports = {
 			cc.eventLoop.push(nextEvent);
 		}
 		this.state = i;
+	},
+
+	sleep8 : function() {
+		var fatigue = cc.player.fatigue.value;
+		var sleepOver = Math.max(0, fatigue - FATIGUE_NONE) / (FATIGUE_DEPRIVED - FATIGUE_NONE);
+		console.log('sleepover linear chance:', sleepOver, sleepOver*sleepOver)
+		sleepOver = sleepOver * sleepOver;
+		if(Math.random() < sleepOver) {
+			cc.eventLoop.time += (fatigue >= FATIGUE_TIRED ? 15 : 12) * 60;
+			cc.player.fatigue.value = 0;
+			return ('Вы проспали!');
+		} else {
+			cc.eventLoop.time += 8 * 60;
+			cc.player.fatigue.value = 0;
+		}
+	},
+
+	sleep4 : function() {
+		var fatigue = cc.player.fatigue.value;
+		var sleepOver = Math.max(0, fatigue - FATIGUE_NONE) / (FATIGUE_DEPRIVED - FATIGUE_NONE);
+		console.log('sleepover linear chance:', sleepOver, sleepOver*sleepOver)
+		if(Math.random() < sleepOver) {
+			cc.eventLoop.time += (fatigue >= FATIGUE_TIRED ? 16 : 12) * 60;
+			cc.player.fatigue.value = 0;
+			return ('Вы проспали!');
+		} else {
+			cc.eventLoop.time += 4 * 60;
+			cc.player.fatigue.value = Math.max(0, fatigue - 8 * 60);
+		}
 	}
 }

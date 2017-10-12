@@ -41,7 +41,11 @@ cc.Class({
 		if(dAxis && !(cc.player.isBusy)) {
 			dAxis.state = (eventData.type == cc.SystemEvent.EventType.KEY_DOWN) ? 1 : 0;
 		} else if(eventData.keyCode == cc.KEY.space) {
-			cc.ui.onActivate();
+			if(player.isBusy) {
+				cc.dlg._waitAction && cc.dlg._waitAction.complete();
+			} else {
+				cc.ui.onActivate();
+			}
 		}
 	},
 
