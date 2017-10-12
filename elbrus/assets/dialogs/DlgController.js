@@ -67,6 +67,7 @@ cc.Class({
 			seq.push(cc.callFuncAsync((asyncAction)=> {
 				var addText = topic.script();
 				if(addText) {
+					addText = cc.player.garble(addText);
 					this.node.runAction(cc.sequence(
 						this.textAction(addText, true),
 						cc.callFunc(asyncAction.complete.bind(asyncAction))
@@ -139,6 +140,7 @@ cc.Class({
 		if(typeof(text) == 'function') {
 			text = text();
 		}
+		text = cc.player.garble(text);
 		var label = cc.instantiate(this.appearLabel.node).getComponent(cc.RichText);
 		label.node.parent = this.appearLabel.node.parent;
 		label.string = "";

@@ -45,6 +45,7 @@ cc.Class({
 		if(!duration) {
 			duration = DEFAULT_DURATION;
 		}
+		text = cc.player.garble(text);
 		this.label.string = '';
 		this.node.opacity = 255;
 		this.node.active = true;

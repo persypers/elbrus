@@ -22,7 +22,9 @@ cc.Class({
 			var node = cc.instantiate(this.labelTemplate);
 			node.parent = this.labelTemplate.parent;
 			node._label = node.getComponent(cc.Label);
-			node._label.string = t.text || t;
+			var text = t.text || t;
+			text = cc.player.garble(text);
+			node._label.string = text;
 			node.active = true;
 			node.topic = t;
 			node.on(cc.Node.EventType.TOUCH_START, this.onMouseDown, this);

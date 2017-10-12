@@ -52,7 +52,10 @@ cc.Class({
 			cc.eventLoop.push({time : msg.time, handler : ()=>{cc.phone.pushMessage(msg)}});
 		}
 
-		cc.eventLoop.push({time : MAX_TIME, handler : ()=>{cc.controller.switchScene('end_screen')}});
+		cc.eventLoop.push({time : MAX_TIME, handler : ()=>{
+			cc.eventLoop.enabled = false;
+			cc.controller.switchScene('end_screen')
+		}});
 
 		cc.systemEvent.on('tick', function(eventData, customData){
 			var dt = cc.eventLoop.dt;

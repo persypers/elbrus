@@ -9,7 +9,7 @@ cc.Class({
             notify : function() {
                 if(this.activateTarget) {
                     this.activateButton.node.active = true;
-                    this.activateButton.getComponentInChildren(cc.Label).string = this.activateTarget.actionText;
+                    this.activateButton.getComponentInChildren(cc.Label).string = cc.player.garble(this.activateTarget.actionText);
                 } else {
                     this.activateButton.node.active = false;
                 }
