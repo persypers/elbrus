@@ -1,0 +1,38 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "stressAmp1",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 2,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "StressFX": {
+        "amplitude": [
+          {
+            "frame": 0,
+            "value": 0,
+            "curve": "expoOut"
+          },
+          {
+            "frame": 0.3333333333333333,
+            "value": 1,
+            "curve": "quadInOut"
+          },
+          {
+            "frame": 1.3333333333333333,
+            "value": -0.5,
+            "curve": "cubicInOut"
+          },
+          {
+            "frame": 2,
+            "value": 0
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

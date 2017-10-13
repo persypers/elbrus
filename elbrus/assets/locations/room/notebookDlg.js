@@ -10,7 +10,7 @@ module.exports = function() {
 	var ideaTopics = {};
 	var ideaHub = [];
 	var ideas = player.ideas;
-	for(var k in ideas) {
+	for(let k in ideas) {
 		let idea = ideas[k]
 		if(idea.collected) {
 			ideaTopics[k] = {

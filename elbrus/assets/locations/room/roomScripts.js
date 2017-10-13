@@ -42,7 +42,8 @@ cc.Class({
                 },
                 watch_reply : {
                     text : 'Некоторое время вы наблюдаете за уличной суетой. Вам не становится сильно легче.',
-                    topics : ['watch', 'end', 'jump'],
+					script : player.ideas.think.bind(this, 15),
+					topics : ['watch', 'end', 'jump'],
                 },
             },
             topics : {
@@ -80,9 +81,7 @@ cc.Class({
                 },
 				rest_reply : {
                     text : 'Это у вас получается хорошо.',
-					script : () => {
-						cc.eventLoop.time += 30;
-					}
+					script : player.ideas.think.bind(this, 30),
 				},
             },
             topics : {

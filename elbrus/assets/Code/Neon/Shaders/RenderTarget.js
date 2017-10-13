@@ -176,6 +176,11 @@ cc.Class({
 		// associate texture with FBO
 			gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, this._texture._webTextureObj, 0);		
 		
+			this._rBO = gl.createRenderbuffer();
+			gl.bindRenderbuffer(gl.RENDERBUFFER, this._rBO);
+			gl.renderbufferStorage(gl.RENDERBUFFER, gl.STENCIL_INDEX8, canvas.width, canvas.height);
+			gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.RENDERBUFFER, this._rBO);
+
 			if(gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE)
 				console.error("Could not attach texture to the framebuffer");
 
@@ -274,9 +279,15 @@ cc.Class({
 		if(this._texture) {
 			this._texture.destroy();
 		}
-		if(cc._renderType == cc.game.RENDER_TYPE_WEBGL && this._fBO) {
-			gl.deleteFramebuffer(this._fBO);
-			delete this._fBO;
+		if(cc._renderType == cc.game.RENDER_TYPE_WEBGL) {
+			if(this._fBO) {
+				gl.deleteFramebuffer(this._fBO);
+				delete this._fBO;
+			}
+			if(this._rBO) {
+				gl.deleteRenderbuffer(this._rBO);
+				delete this._rBO;
+			}
 		}
 	},
 
