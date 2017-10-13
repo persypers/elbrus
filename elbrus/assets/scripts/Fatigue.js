@@ -101,9 +101,11 @@ module.exports = {
 		var sleepOver = Math.max(0, fatigue - FATIGUE_NONE) / (FATIGUE_DEPRIVED - FATIGUE_NONE);
 		console.log('sleepover linear chance:', sleepOver, sleepOver*sleepOver)
 		sleepOver = sleepOver * sleepOver;
+		cc.player.stress *= 0.2;
 		if(Math.random() < sleepOver) {
 			cc.eventLoop.time += (fatigue >= FATIGUE_TIRED ? 15 : 12) * 60;
 			cc.player.fatigue.value = 0;
+			cc.player.stress += 60;
 			return ('Вы проспали!');
 		} else {
 			cc.eventLoop.time += 8 * 60;
@@ -115,9 +117,11 @@ module.exports = {
 		var fatigue = cc.player.fatigue.value;
 		var sleepOver = Math.max(0, fatigue - FATIGUE_NONE) / (FATIGUE_DEPRIVED - FATIGUE_NONE);
 		console.log('sleepover linear chance:', sleepOver, sleepOver*sleepOver)
+		cc.player.stress *= 0.4;
 		if(Math.random() < sleepOver) {
 			cc.eventLoop.time += (fatigue >= FATIGUE_TIRED ? 16 : 12) * 60;
 			cc.player.fatigue.value = 0;
+			cc.player.stress += 90;
 			return ('Вы проспали!');
 		} else {
 			cc.eventLoop.time += 4 * 60;

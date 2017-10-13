@@ -3,7 +3,7 @@
   "_name": "stressAmp2",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 1.5,
+  "_duration": 3.816666666666667,
   "sample": 60,
   "speed": 1,
   "wrapMode": 1,
@@ -12,37 +12,17 @@
       "StressFX": {
         "amplitude": [
           {
-            "frame": 0,
+            "frame": 0.016666666666666666,
             "value": 0,
             "curve": "cubicInOut"
           },
           {
-            "frame": 0.4166666666666667,
-            "value": 0.5,
-            "curve": "cubicInOut"
-          },
-          {
-            "frame": 0.6666666666666666,
-            "value": 0.4,
-            "curve": "cubicInOut"
-          },
-          {
-            "frame": 0.95,
-            "value": 0.7,
-            "curve": "cubicIn"
-          },
-          {
-            "frame": 1.1,
-            "value": 0.6,
-            "curve": "cubicOut"
-          },
-          {
-            "frame": 1.2833333333333334,
+            "frame": 1.9833333333333334,
             "value": 1,
             "curve": "expoIn"
           },
           {
-            "frame": 1.5,
+            "frame": 3.816666666666667,
             "value": 0
           }
         ]

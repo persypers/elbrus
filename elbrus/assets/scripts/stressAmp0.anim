@@ -3,7 +3,7 @@
   "_name": "stressAmp0",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 1,
+  "_duration": 4.966666666666667,
   "sample": 60,
   "speed": 1,
   "wrapMode": 1,
@@ -17,12 +17,12 @@
             "curve": "quadInOut"
           },
           {
-            "frame": 0.5,
+            "frame": 2.466666666666667,
             "value": 1,
             "curve": "cubicInOut"
           },
           {
-            "frame": 1,
+            "frame": 4.966666666666667,
             "value": 0
           }
         ]

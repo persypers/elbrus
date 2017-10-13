@@ -107,12 +107,14 @@ module.exports = {
 		cc.player.staleFoodOnKitchen = true;
 		cc.player.hunger.value = 0;
 		cc.eventLoop.time += 60;
+		cc.player.stress *= 0.25;
 		return ('Было вкусно.');
 	},
 
 	eatStale : () => {
 		cc.player.staleFoodOnKitchen = false;
 		cc.player.hunger.value = Math.max(0, cc.player.hunger.value - 60 * 10);
+		cc.player.stress += 30;
 		cc.eventLoop.time += 15;
 		return  'Иногда нужно прикоснуться к своему прошлому, чтобы шагнуть в будующее.';
 	},
