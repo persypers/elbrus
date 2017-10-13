@@ -10,7 +10,10 @@ cc.Class({
 
     properties: {
 		playerPrefab : cc.Prefab,
+		sceneRoot : cc.Node,
 		fader : cc.Animation,
+		debug_scene : '',
+		debug_entry : '',
 	},
 
     // use this for initialization
@@ -25,6 +28,7 @@ cc.Class({
 		var seq = [
 			cc.animate(this.fader, null, cc.WrapMode.Normal),
 			cc.callFunc(function() {
+				if(cc.scene) cc.scene.node.destroy();
 				cc.director.loadScene(scene, ()=> {
 					if(entryPoint) {
 						var player = cc.instantiate(this.playerPrefab);
@@ -33,6 +37,7 @@ cc.Class({
 						player.x = 0;
 						player.y = 0;
 						utils.changeParentWithPosSaving(player, cc.scene.node);
+						utils.changeParentWithPosSaving(cc.scene.node, this.sceneRoot);
 					}
 					wait.complete();
 					if(typeof(onDone) == 'function'){
@@ -67,6 +72,12 @@ cc.Class({
 			hunger.update(dt);
 			fatigue.update(dt);
 		});
+
+		if(this.debug_scene.length > 0) {
+			this.switchScene(this.debug_scene, this.debug_entry, ()=>{
+				player.isBusy = false;
+			});				
+		}
 	},
 
 	onStart : function() {

@@ -23,7 +23,9 @@ var player = {
 	phrases : require('PlayerPhrases'),
 	
 	say : function(msg) {
-		cc.playerNode.getComponentInChildren('TextField').say(msg);
+		if(cc.playerNode && cc.playerNode.isValid) {
+			cc.playerNode.getComponentInChildren('TextField').say(msg);
+		}
 	},
 	
 	getNormalizedStress : function() {
@@ -35,6 +37,7 @@ var player = {
 		stress = Math.max(0, stress - 0.5) * 2;
 		stress = stress * stress * 0.5;
 		var words = text.match(/[a-zа-я]{4,}/ig);
+		if(!words) return text;
 		var index = -1;
 		var prevIndex = 0;
 		var result = '';
