@@ -1832,7 +1832,7 @@
     "_dstBlendFactor": 771,
     "playOnLoad": true,
     "_autoRemoveOnFinish": false,
-    "_totalParticles": 150,
+    "_totalParticles": 1500,
     "_duration": -1,
     "_emissionRate": 50,
     "_life": 1,

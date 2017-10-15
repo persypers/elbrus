@@ -4362,8 +4362,8 @@
     "fader": {
       "__id__": 36
     },
-    "debug_scene": "room_basic",
-    "debug_entry": "bed/entry"
+    "debug_scene": "park_basic",
+    "debug_entry": "park_enterance1/entry"
   },
   {
     "__type__": "cc.PrefabInfo",
