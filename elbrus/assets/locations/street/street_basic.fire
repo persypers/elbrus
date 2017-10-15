@@ -945,8 +945,8 @@
       "__id__": 24
     },
     "_enabled": true,
-    "script": "",
-    "dialog": "Room_enter",
+    "script": "Room_enter",
+    "dialog": "",
     "handler": null,
     "highlight": {
       "__id__": 23
@@ -1240,8 +1240,8 @@
       "__id__": 33
     },
     "_enabled": true,
-    "script": "",
-    "dialog": "parkEnter",
+    "script": "parkEnter",
+    "dialog": "",
     "handler": null,
     "highlight": {
       "__id__": 32

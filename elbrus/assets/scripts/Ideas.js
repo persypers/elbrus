@@ -145,6 +145,14 @@ ideas.forgetRandom = function() {
 		forget.collected = false;
 	}
 	return forget;
-}
+};
+
+ideas.collect = function(ideaKey) {
+	var idea = ideas[ideaKey];
+	if(!idea.collected) {
+		idea.collected = true;
+		return idea.collectText;
+	}
+};
 
 module.exports = ideas;

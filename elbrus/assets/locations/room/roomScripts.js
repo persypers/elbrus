@@ -18,19 +18,15 @@ cc.Class({
         }        
     },
 
-	doorScript : function() {
-		cc.controller.switchScene('street_basic', 'room_enterance/enter_trigger');
-		cc.eventLoop.time += 5;
-	},
-
     room_window_dlg : function() {
-        return {
+		var topics = ['watch', 'end', ()=>(cc.player.getNormalizedStress() > 0.6) && 'jump'];
+		return {
 			npcSprite : ()=>cc.find('window/Window', cc.scene.node).getComponent(cc.Sprite).spriteFrame,
             start : 'start',
             replies : {
                 start : {
                     text : 'Мелкие капли дождя скатываются по стеклу в никуда.',
-                    topics : ['watch', 'end', 'jump'],
+                    topics : topics,
                 },
                 jump_reply : {
                     text : 'Взобравшись на подоконник, вы в последний раз оглядели своё печальное жилище и шагнули в нежные объятия неизвестности.',
@@ -43,7 +39,7 @@ cc.Class({
                 watch_reply : {
                     text : 'Некоторое время вы наблюдаете за уличной суетой. Вам не становится сильно легче.',
 					script : player.ideas.think.bind(this, 15),
-					topics : ['watch', 'end', 'jump'],
+					topics : topics,
                 },
             },
             topics : {
@@ -139,6 +135,44 @@ cc.Class({
             }
         }
     },
+
+	doorScript : function() {
+		var dlg = {
+			start : () => player.hasLeftRoom ? 'startConfirm' : 'start',
+			replies : {
+				start : {
+					text : 'Скрип этой дверной ручки всегда ассоциируется для вас со страхом и неприязнью - чувствами, с которыми вы каждый раз покидаете своё уютное жилище и ступаете в непредсказуемый и жестокий внешний мир.',
+					topics : ['leave_first', 'end'],
+				},
+				startConfirm : {
+					text : 'Здесь у вас есть всё необходимое для продуктивной работы в течение нескольких дней: запас продуктов, электричество и интернет. Вы уверены, что хотите уйти?',
+					topics : ['leave', 'end']
+				},
+				leaveReply : {
+					text : 'Гулким эхом звук захлопывающейся двери разносится по подъезду.',
+					script : ()=>{
+						player.hasLeftRoom = true;
+						cc.eventLoop.time += 5;
+						cc.controller.switchScene('street_basic', 'room_enterance/enter_trigger');
+					}
+				}
+			},
+			topics : {
+				leave_first : {
+					text : 'Пересилить свою социопатию и выйти за порог',
+					reply : 'startConfirm',
+				},
+				leave : {
+					text : 'Да, нельзя всё время отсиживаться дома',
+					reply : 'leaveReply',
+				},
+				end : {
+					text : 'Пожалуй, лучше будет остаться дома',
+				}
+			}
+		}
+		cc.director.getScene().getComponentInChildren('DlgController').playDialog(dlg);
+	},
 
     notebook : require('notebookDlg'),
 });
