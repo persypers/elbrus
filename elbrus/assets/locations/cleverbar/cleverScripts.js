@@ -259,7 +259,7 @@ cc.Class({
 
 	exitDlg : {
 
-	}
+	},
 
     gop : function() {
         return {

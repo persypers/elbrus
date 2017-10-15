@@ -20,7 +20,11 @@ cc.Class({
 	},
 
     Room_enter : function() {
-        return {
+		if(cc.player.streetToRoomEntered) {
+			cc.controller.switchScene('room_basic', 'door/entry');
+			return;
+		}
+		var dlg = {
             start : 'start',
             replies : {
                 start : {
@@ -31,6 +35,7 @@ cc.Class({
 					text : 'Дом, милый дом.',
 					script: ()=>{
 						cc.controller.switchScene('room_basic', 'door/entry');
+						cc.player.streetToRoomEntered = true;
 						cc.eventLoop.time += 5;
 					}
                 }
@@ -44,7 +49,8 @@ cc.Class({
                     text : 'Смутившись отойти'
                 }
             }
-        }
+		}
+		cc.director.getScene().getComponentInChildren('DlgController').playDialog(dlg);
     },
 
     window : function() {
@@ -57,7 +63,8 @@ cc.Class({
                 },
                 inspect_reply : {
                     text : 'С этой стороны угрюмая комната уже не кажется таким ужасным местом. Но мысли о предстоящей работе отвратительно отзываются горечью в груди.',
-                    topics : ['enter', 'end'],
+					script : cc.player.ideas.collect.bind(cc.player.ideas, 'examplesBody'),
+					topics : ['enter', 'end'],
                 },
                 enter_reply : {
                     text : 'Размазывая ботинками грязь, вы залезаете в свою комнату . В процессе вас не покидает вопрос "Зачем?".',
@@ -83,39 +90,12 @@ cc.Class({
         }
     },
 
-    bedDialog : function() {
-        return {
-            start : 'start',
-            replies : {
-                start : {
-                    text : 'Старая скрипучая тахта, сойдёт для одиночки',
-                    topics : ['sleep', 'rest', 'end'],
-                },
-                sleep_reply : {
-                    text : 'Здоровый сон восстанавливает вам силы.',
-                },
-                rest_reply : {
-                    text : 'Это у вас получается хорошо.',
-                },
-            },
-            topics : {
-                sleep : {
-                    text : 'Спать',
-                    reply : 'sleep_reply',
-                },
-                rest : {
-                    text : 'Поваляться',
-                    reply : 'rest_reply',
-                },
-                end : {
-                    text : 'Вернуться в насущным проблемам'
-                }
-            }
-        }
-    },
-
     parkEnter : function() {
-        return {
+		if(cc.player.enteredPark) {
+			cc.controller.switchScene('park_basic', 'park_enterance1/entry');
+			return;
+		}
+		var dlg = {
             start : 'start',
             replies : {
                 start : {
@@ -126,7 +106,8 @@ cc.Class({
                     text : 'Перепрыгнув одну лужу, вы случайно наступаете в другу. Зато вы в парке.',
                     script : ()=>{
 						cc.controller.switchScene('park_basic', 'park_enterance1/entry');
-						cc.eventLoop.time += 60;
+						cc.player.enteredPark = true;
+						cc.eventLoop.time += 5;
 					},
                 }
             },
@@ -139,7 +120,8 @@ cc.Class({
                     text : 'Остаться на здесь.'
                 }
             }
-        }
+		}
+		cc.director.getScene().getComponentInChildren('DlgController').playDialog(dlg);
     },
 
     kitchen : function() {
