@@ -1695,12 +1695,12 @@
     },
     "_enabled": true,
     "script": "",
-    "dialog": "kitchen",
+    "dialog": "pairDlg",
     "handler": null,
     "highlight": {
       "__id__": 43
     },
-    "actionText": "Кухня"
+    "actionText": "Hipsters"
   },
   {
     "__type__": "cc.Node",
@@ -2042,7 +2042,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 491,
+      "x": 490,
       "y": -61
     },
     "_skewX": 0,
@@ -2143,7 +2143,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 134,
-      "height": 336
+      "height": 335
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -2170,7 +2170,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "99e99a0f-cd3b-401e-8eb3-5e6efbaad76d"
+      "__uuid__": "9fd207b0-bad3-4693-b06e-6c28ec0aafd2"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -2356,13 +2356,13 @@
       "__id__": 63
     },
     "_enabled": true,
-    "script": "doorScript",
+    "script": "exitScript",
     "dialog": "",
     "handler": null,
     "highlight": {
       "__id__": 61
     },
-    "actionText": "На улицу"
+    "actionText": "Exit"
   },
   {
     "__type__": "cc.Node",
