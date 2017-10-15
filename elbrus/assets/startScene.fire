@@ -4362,8 +4362,8 @@
     "fader": {
       "__id__": 36
     },
-    "debug_scene": "nsu_basic",
-    "debug_entry": "nsu/entry"
+    "debug_scene": "porch",
+    "debug_entry": "streetDoor/entry"
   },
   {
     "__type__": "cc.PrefabInfo",

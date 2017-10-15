@@ -5,54 +5,42 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-    },
+		benchPrefab : cc.Prefab,
+		lowerBound : cc.BoxCollider,
+		upperBound : cc.BoxCollider,
+	},
 
     onLoad : function() {
-        cc.scene = this;
+		cc.scene = this;
+		var stress = cc.player.getNormalizedStress();
+		var benchCount = cc.lerp(2, 7, stress * stress * stress);
+		benchCount = Math.floor(benchCount);
+		for(var i = 0; i < benchCount; i++) {
+			var n = cc.instantiate(this.benchPrefab);
+			n.parent = this.node;
+			n.x = 540 + i * 415;
+			n.y = -96;
+		}
+		this.node.width = benchCount * 415 + 540 + 540;
+		this.upperBound.size.width = this.node.width;
+		this.lowerBound.size.width = this.node.width;
+		
     },
 
-    freebench : function() {
-        if(!this._suicideFail) {
-            this._suicideFail = true;
-            player.textField.show('Кажется, на этой лавочке можно сосредоточиться.');
-        }        
-    },
-
-    room_window_dlg : function() {
-        return {
-            start : 'start',
-            replies : {
-                start : {
-                    text : 'Мелкие капли дождя скатываются по стеклу в никуда.',
-                    topics : ['watch', 'end', 'jump'],
-                },
-                jump_reply : {
-                    text : 'Взобравшись на подоконник, вы в последний раз оглядели своё печальное жилище и шагнули в нежные объятия неизвестности.',
-                    script : ()=>{cc.playerNode.destroy()},
-                },
-                watch_reply : {
-                    text : 'Некоторое время вы наблюдаете за уличной суетой. Вам не становится сильно легче.',
-                    topics : ['watch', 'end', 'jump'],
-                },
-            },
-            topics : {
-                jump : {
-                    text : 'Выброситься из окна',
-                    reply : 'jump_reply',
-                },
-                watch : {
-                    text : 'Созерцать мир за окном',
-                    reply : 'watch_reply',
-                },
-                end : {
-                    text : 'Вернуться в насущным проблемам'
-                }
-            }
-        }
-    },
+	update : function() {
+		var playerNode = cc.playerNode;
+		if(playerNode) {
+			var half = 1366 * 0.5;
+			this.node.x = -Math.max(half, Math.min(this.node.width - half, playerNode.x));
+		}
+	},
 
     parkExit : function() {
-        return {
+		if(cc.player.enteredPark) {
+			cc.controller.switchScene('street_basic', 'park_enterance/entry');
+			return
+		}
+		var dlg = {
             start : 'start',
             replies : {
                 start : {
@@ -63,76 +51,21 @@ cc.Class({
                     text : 'Выход преграждает огромная лужа. Вам ничего не остаётся, кроме как отчаяно прошлёпать скозь неё.',
                     script : ()=>{
 						cc.controller.switchScene('street_basic', 'park_enterance/entry');
-						cc.eventLoop.time += 60;
+						cc.player.enteredPark = true;
 					},
                 }
             },
             topics : {
                 walk : {
-                    text : 'Вернуться к урбанистическому пейзажу главной улицы. (10 минут)',
+                    text : 'Вернуться к урбанистическому пейзажу главной улицы.',
                     reply : 'walk_reply'
                 },
                 end : {
                     text : 'Позависать в парке ещё.'
                 }
             }
-        }
-    },
-
-    Room_enter : function() {
-        return {
-            start : 'start',
-            replies : {
-                start : {
-                    text : 'Обычный человеческий вход в общежитие. Краска на дверях облупилась и покрылась несколькими слоями объявлений.',
-                    topics : ['enter', 'end'],
-                },
-                enter_reply : {
-                    text : 'Здоровый сон восстанавливает вам силы.',
-                }
-            },
-            topics : {
-                enter : {
-                    text : 'Войти в общежитие',
-                    reply : 'enter_reply',
-                },
-                end : {
-                    text : 'Смутившись отойти'
-                }
-            }
-        }
-    },
-
-    window : function() {
-        return {
-            start : 'start',
-            replies : {
-                start : {
-                    text : 'Кажется, это окно вашей комнаты общежития. Хотя, нет... Это точно окно вашей комнаты общежития.',
-                    topics : ['inspect', 'enter', 'end'],
-                },
-                inspect_reply : {
-                    text : 'С этой стороны угрюмая комната уже не кажется таким ужасным местом. Но мысли о предстоящей работе отвратительно отзываются горечью в груди.',
-                    topics : ['enter', 'end'],
-                },
-                enter_reply : {
-                    text : 'Размазывая ботинками грязь, вы залезаете в свою комнату . В процессе вас не покидает вопрос "Зачем?".',
-                }
-            },
-            topics : {
-                inspect : {
-                    text : "Заглянуть в окно",
-                    reply : 'inspect_reply',
-                },
-                enter : {
-                    text : 'Попытаться залезть',
-                    reply : 'enter_reply',
-                },
-                end : {
-                    text : 'Продолжить мокнуть под дождём.'
-                }
-            }
-        }
+		}
+		cc.director.getScene().getComponentInChildren('DlgController').playDialog(dlg);
     },
 
     benchDialog : function() {
@@ -183,7 +116,8 @@ cc.Class({
                 relax : {
                     text : 'Расслабиться. (30 минут)',
                     script : () => {
-                        player.stress = false;
+						player.stress *= 0.2;
+						cc.eventLoop.time += 30;
                     },
                     reply : "sit_reply"
                 },
@@ -193,8 +127,6 @@ cc.Class({
             }
         }
     },
-
-
 
     gop : function() {
         return {
@@ -240,45 +172,6 @@ cc.Class({
                 },
                 end : {
                     text : 'Отойти от этой сляконтой мерзости.'
-                }
-            }
-        }
-    },
-
-    kitchen : function() {
-        return {
-            start : 'start',
-            replies : {
-                start : {
-                    text : () =>
-                        'Оставшаяся от предыдущих жильцов плитка помогает вам поддерживать жизнедеятельность с минимальными расходами.'
-                        + (player.staleFoodOnKitchen && ' На столе лежит подсохшая еда.' || ''),
-                    topics : ['fresh', ()=>player.staleFoodOnKitchen && 'stale', 'end'],
-                },
-                fresh : {
-                    text : () => 'Вы приготовили ' + ['рагу', 'суп', 'котлеты', "пирог", "омлет", "плов"].pickRandom() + '.',
-                    script : ()=>{
-                        player.staleFoodOnKitchen = true
-                    },
-                },
-                stale : {
-                    text : 'Вчерашняя еда. Иногда нужно прикоснуться к своему прошлому, чтобы шагнуть в будующее.',
-                    script : () => {
-                        player.staleFoodOnKitchen = false;
-                    }
-                },
-            },
-            topics : {
-                fresh : {
-                    text : 'Приготовить что-нибудь',
-                    reply : 'fresh',
-                },
-                stale : {
-                    text : 'Доесть недоедки',
-                    reply : 'stale',
-                },
-                end : {
-                    text : 'Не время набивать брюхо'
                 }
             }
         }

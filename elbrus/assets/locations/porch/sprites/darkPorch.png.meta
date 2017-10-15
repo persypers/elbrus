@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "4ba8e29e-e72b-4197-ae51-41c219b2802d",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "darkPorch": {
+      "ver": "1.0.3",
+      "uuid": "60ab3cbd-b658-4839-9131-79f753beae72",
+      "rawTextureUuid": "4ba8e29e-e72b-4197-ae51-41c219b2802d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -0.5,
+      "trimX": 0,
+      "trimY": 1,
+      "width": 1197,
+      "height": 457,
+      "rawWidth": 1197,
+      "rawHeight": 458,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

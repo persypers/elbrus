@@ -21,7 +21,11 @@ cc.Class({
 
     Room_enter : function() {
 		if(cc.player.streetToRoomEntered) {
-			cc.controller.switchScene('room_basic', 'door/entry');
+			if(cc.player.blackOut) {
+				cc.controller.switchScene('porch', 'streetDoor/entry');
+			} else {
+				cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Дом, милый дом')});
+			}
 			return;
 		}
 		var dlg = {
@@ -30,21 +34,22 @@ cc.Class({
                 start : {
                     text : 'Обычный человеческий вход в общежитие. Краска на дверях облупилась и покрылась несколькими слоями объявлений.',
                     topics : ['enter', 'end'],
-                },
-                enter_reply : {
-					text : 'Дом, милый дом.',
-					script: ()=>{
-						cc.controller.switchScene('room_basic', 'door/entry');
-						cc.player.streetToRoomEntered = true;
-						cc.eventLoop.time += 5;
-					}
                 }
             },
             topics : {
                 enter : {
                     text : 'Войти в общежитие',
                     reply : 'enter_reply',
-                },
+					script: ()=>{
+						if(cc.player.blackOut) {
+							cc.controller.switchScene('porch', 'streetDoor/entry');
+						} else {
+							cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Дом, милый дом')});
+						}
+						cc.player.streetToRoomEntered = true;
+						cc.eventLoop.time += 5;
+					}
+				},
                 end : {
                     text : 'Смутившись отойти'
                 }
