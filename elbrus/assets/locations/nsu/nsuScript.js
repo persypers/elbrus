@@ -11,6 +11,14 @@ cc.Class({
         cc.scene = this;
     },
 
+	update : function() {
+		var playerNode = cc.playerNode;
+		if(playerNode) {
+			var half = 1366 * 0.5;
+			this.node.x = -Math.max(half, Math.min(this.node.width - half, playerNode.x));
+		}
+	},
+
     freebench : function() {
         if(!this._suicideFail) {
             this._suicideFail = true;

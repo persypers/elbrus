@@ -68,6 +68,10 @@ cc.Class({
 		cc.director.getScene().getComponentInChildren('DlgController').playDialog(dlg);
     },
 
+	toNsu : function() {
+		cc.controller.switchScene('nsu_basic', 'nsu/entry');
+	},
+
     benchDialog : function() {
         return {
             start : 'start',
