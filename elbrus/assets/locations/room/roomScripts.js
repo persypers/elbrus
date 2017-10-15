@@ -153,7 +153,11 @@ cc.Class({
 					script : ()=>{
 						player.hasLeftRoom = true;
 						cc.eventLoop.time += 5;
-						cc.controller.switchScene('street_basic', 'room_enterance/enter_trigger');
+						if(cc.player.blackOut) {
+							cc.controller.switchScene('porch', 'roomDoor/entry');
+						} else {
+							cc.controller.switchScene('street_basic', 'room_enterance/enter_trigger');
+						}
 					}
 				}
 			},

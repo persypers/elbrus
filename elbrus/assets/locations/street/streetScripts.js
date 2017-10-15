@@ -21,7 +21,11 @@ cc.Class({
 
     Room_enter : function() {
 		if(cc.player.streetToRoomEntered) {
-			cc.controller.switchScene('room_basic', 'door/entry');
+			if(cc.player.blackOut) {
+				cc.controller.switchScene('porch', 'streetDoor/entry');
+			} else {
+				cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Дом, милый дом')});
+			}
 			return;
 		}
 		var dlg = {
@@ -37,7 +41,11 @@ cc.Class({
                     text : 'Войти в общежитие',
                     reply : 'enter_reply',
 					script: ()=>{
-						cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Дом, милый дом')});
+						if(cc.player.blackOut) {
+							cc.controller.switchScene('porch', 'streetDoor/entry');
+						} else {
+							cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Дом, милый дом')});
+						}
 						cc.player.streetToRoomEntered = true;
 						cc.eventLoop.time += 5;
 					}

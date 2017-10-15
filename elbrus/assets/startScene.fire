@@ -4362,8 +4362,8 @@
     "fader": {
       "__id__": 36
     },
-    "debug_scene": "park_basic",
-    "debug_entry": "park_enterance1/entry"
+    "debug_scene": "porch",
+    "debug_entry": "streetDoor/entry"
   },
   {
     "__type__": "cc.PrefabInfo",

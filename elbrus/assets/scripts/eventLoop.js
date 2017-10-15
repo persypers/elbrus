@@ -41,7 +41,7 @@ cc.Class({
     },
 
 	update : function(dt) {
-		this._millis += dt * 10;
+		this._millis += dt;
 		if(this._millis >= 1.0) {
 			var seconds = Math.floor(this._millis);
 			this._millis -= seconds;
