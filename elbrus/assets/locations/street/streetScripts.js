@@ -21,10 +21,11 @@ cc.Class({
 
     Room_enter : function() {
 		if(cc.player.streetToRoomEntered) {
-			if(cc.player.blackOut) {
+			if(cc.player.blackOut && cc.player.electricianCalled) {
 				cc.controller.switchScene('porch', 'streetDoor/entry');
 			} else {
 				cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Дом, милый дом')});
+				cc.eventLoop.time += 5;
 			}
 			return;
 		}
@@ -41,7 +42,7 @@ cc.Class({
                     text : 'Войти в общежитие',
                     reply : 'enter_reply',
 					script: ()=>{
-						if(cc.player.blackOut) {
+						if(cc.player.blackOut && cc.player.electricianCalled) {
 							cc.controller.switchScene('porch', 'streetDoor/entry');
 						} else {
 							cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Дом, милый дом')});

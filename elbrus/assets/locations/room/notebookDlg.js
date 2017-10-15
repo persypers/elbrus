@@ -2,6 +2,7 @@ var player = cc.player;
 
 module.exports = function() {
 	var start = () => {
+		if(player.blackOut) return 'no_power';
 		if(player.pages <100) return 'startHub';
 		return 'startDone';
 	};
@@ -76,6 +77,9 @@ module.exports = function() {
 					cc.eventLoop.time += Math.floor(Math.random() * 120 + 120);
 				}
 			},
+			no_power : {
+				text : 'Аккумулятор вашего ноутбука давным давно перестал подавать признаки жизни. Без электричества продолжить работу не получится.',
+			}
 		},
 		topics : {
 			writeBland : {

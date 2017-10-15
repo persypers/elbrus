@@ -4,6 +4,7 @@ var hunger = require('Hunger');
 var fatigue = require('Fatigue');
 
 var MAX_TIME = cc.MAX_TIME = 72 * 60;
+var BLACKOUT_TIME = 60 * (24 +3);
 
 cc.Class({
     extends: cc.Component,
@@ -60,6 +61,14 @@ cc.Class({
 		cc.eventLoop.push({time : MAX_TIME, handler : ()=>{
 			cc.eventLoop.enabled = false;
 			cc.controller.switchScene('end_screen')
+		}});
+
+		cc.eventLoop.push({time : BLACKOUT_TIME, handler : ()=>{
+			cc.player.blackOut = true;
+			if(cc.scene.node.name == 'room_back') {
+				cc.scene.isDark = true;
+				cc.player.say('Ой! Может пробки выбило?');
+			}
 		}});
 
 		cc.systemEvent.on('tick', function(eventData, customData){
