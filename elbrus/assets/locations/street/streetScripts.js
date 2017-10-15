@@ -16,7 +16,15 @@ cc.Class({
 			player.jumpedWindow = false;
 			cc.eventLoop.push({time : 1, handler : ()=>{cc.player.say('Это первый этаж. Сомнительная затея.')}})
 		}
-		cc.controller.getComponent(cc.AudioSource).play();
+		//cc.controller.getComponent(cc.AudioSource).play();
+	},
+
+	update : function() {
+		var playerNode = cc.playerNode;
+		if(playerNode) {
+			var half = 1366 * 0.5;
+			this.node.x = -Math.max(half, Math.min(this.node.width - half, playerNode.x));
+		}
 	},
 
     Room_enter : function() {
