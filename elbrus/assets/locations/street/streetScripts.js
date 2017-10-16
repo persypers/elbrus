@@ -16,15 +16,24 @@ cc.Class({
 			player.jumpedWindow = false;
 			cc.eventLoop.push({time : 1, handler : ()=>{cc.player.say('Это первый этаж. Сомнительная затея.')}})
 		}
-		cc.controller.getComponent(cc.AudioSource).play();
+		//cc.controller.getComponent(cc.AudioSource).play();
+	},
+
+	update : function() {
+		var playerNode = cc.playerNode;
+		if(playerNode) {
+			var half = 1366 * 0.5;
+			this.node.x = -Math.max(half, Math.min(this.node.width - half, playerNode.x));
+		}
 	},
 
     Room_enter : function() {
 		if(cc.player.streetToRoomEntered) {
-			if(cc.player.blackOut) {
+			if(cc.player.blackOut && cc.player.electricianCalled) {
 				cc.controller.switchScene('porch', 'streetDoor/entry');
 			} else {
 				cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Дом, милый дом')});
+				cc.eventLoop.time += 5;
 			}
 			return;
 		}
@@ -41,7 +50,7 @@ cc.Class({
                     text : 'Войти в общежитие',
                     reply : 'enter_reply',
 					script: ()=>{
-						if(cc.player.blackOut) {
+						if(cc.player.blackOut && cc.player.electricianCalled) {
 							cc.controller.switchScene('porch', 'streetDoor/entry');
 						} else {
 							cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Дом, милый дом')});

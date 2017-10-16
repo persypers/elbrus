@@ -5,11 +5,33 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-    },
+		isDark : {
+			default : false,
+			notify : function() {
+				var en = this.isDark;
+				var darkens = this.darkens;
+				for(var i = 0; i < darkens.length; i++) {
+					darkens[i].active = en;
+				}
+			}
+		},
+	},
 
     onLoad : function() {
-        cc.scene = this;
+		var children = this.node.children;
+		this.darkens = [];
+		for(var i = 0; i < children.length; i++) {
+			var dark = children[i].getChildByName('dark');
+			if(dark) {
+				this.darkens.push(dark);
+			}
+		}
+		cc.scene = this;
     },
+
+	start : function() {
+		this.isDark = cc.player.blackOut;
+	},
 
     behindBed : function() {
         if(!this._behindBed) {
@@ -109,14 +131,14 @@ cc.Class({
                     text : () =>
                         'Оставшаяся от предыдущих жильцов плитка помогает вам поддерживать жизнедеятельность с минимальными расходами.'
                         + (player.staleFoodOnKitchen && ' На столе лежит подсохшая еда.' || ''),
-                    topics : ['fresh', ()=>player.staleFoodOnKitchen && 'stale', 'end'],
+                    topics : [()=>!cc.player.blackOut && 'fresh', ()=>player.staleFoodOnKitchen && 'stale', 'end'],
                 },
                 fresh : {
                     text : () => 'Вы приготовили ' + ['рагу', 'суп', 'котлеты', "пирог", "омлет", "плов"].pickRandom() + '.',
                     script : player.hunger.eatFresh,
                 },
                 stale : {
-                    text : 'Вы разогреваете и доедаете вчерашнюю еду.',
+                    text : ()=>cc.player.blackOut ? 'Без электричества вы даже не можете разогреть свой печальный обед.' : 'Вы разогреваете и доедаете вчерашнюю еду.',
 					script : player.hunger.eatStale,
 				},
             },
@@ -153,7 +175,7 @@ cc.Class({
 					script : ()=>{
 						player.hasLeftRoom = true;
 						cc.eventLoop.time += 5;
-						if(cc.player.blackOut) {
+						if(cc.player.blackOut && cc.player.electricianCalled) {
 							cc.controller.switchScene('porch', 'roomDoor/entry');
 						} else {
 							cc.controller.switchScene('street_basic', 'room_enterance/enter_trigger');
