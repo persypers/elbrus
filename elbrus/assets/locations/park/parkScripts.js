@@ -13,7 +13,7 @@ cc.Class({
     onLoad : function() {
 		cc.scene = this;
 		var stress = cc.player.getNormalizedStress();
-		var benchCount = cc.lerp(2, 7, stress * stress * stress);
+		var benchCount = cc.lerp(4, 9, stress * stress * stress);
 		benchCount = Math.floor(benchCount);
 		for(var i = 0; i < benchCount; i++) {
 			var n = cc.instantiate(this.benchPrefab);
@@ -26,6 +26,13 @@ cc.Class({
 		this.lowerBound.size.width = this.node.width;
 		
     },
+
+	start : function() {
+		var playerNode = cc.playerNode;
+		if(playerNode && playerNode.x > 200) {
+			playerNode.x = this.node.width - 200;
+		}
+	},
 
 	update : function() {
 		var playerNode = cc.playerNode;
@@ -82,7 +89,7 @@ cc.Class({
                 },
                 sit_reply : {
                     text : 'Влажное холодное дерево быстро забирает тепло вашего тела. Интересно, краска прилипнет к одежде?',
-                    topics : [()=>player.currentIdea || 'think_y', ()=>player.currentIdea && 'think_a', ()=>player.stress && 'relax', 'end']
+                    topics : [()=>player.currentIdea || 'think_y', ()=>player.currentIdea && 'think_a', ()=>player.getNormalizedStress()>0.8 && 'relax', 'end']
                 },
                 think_n_reply : {
                     text : 'Нахмурив лоб и размяв виски вы понимате, что на лавочку можно сесть.',
@@ -91,13 +98,13 @@ cc.Class({
                 think_y_reply : {
                     text : 'Вам в голову приходит идея, несмотря на то, что ветер пытается выдуть её из ваших ушей. Она определённо пригодится.',
                     script : ()=>{
-                        player.currentIdea = true
+                        return cc.player.ideas.think(30);
                     },
                     topics : ['think_a', 'end']
                 },
                 think_a_reply : {
                     text : 'На секунду вам кажется, что новая мысль лучше предыдущей. Пока вы прицениваетесь, какая вам больше нравится, ветру удаётся выдуть одну из них.',
-                    topics : ['think_a', 'end']
+                    topics : ['think_a', 'end'],
                 }
             },
             topics : {
@@ -122,6 +129,7 @@ cc.Class({
                     script : () => {
 						player.stress *= 0.2;
 						cc.eventLoop.time += 30;
+						return player.ideas.collect('futurePrediction');
                     },
                     reply : "sit_reply"
                 },

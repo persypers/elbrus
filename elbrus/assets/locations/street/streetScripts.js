@@ -138,94 +138,73 @@ cc.Class({
 		cc.director.getScene().getComponentInChildren('DlgController').playDialog(dlg);
     },
 
-    kitchen : function() {
-        return {
+	toBar : function() {
+		if(cc.player.barEntered) {
+			cc.controller.switchScene('clever_basic', 'door/entry');
+			return;
+		}
+		var dlg = {
             start : 'start',
             replies : {
                 start : {
-                    text : () =>
-                        'Оставшаяся от предыдущих жильцов плитка помогает вам поддерживать жизнедеятельность с минимальными расходами.'
-                        + (player.staleFoodOnKitchen && ' На столе лежит подсохшая еда.' || ''),
-                    topics : ['fresh', ()=>player.staleFoodOnKitchen && 'stale', 'end'],
+                    text : 'Из приоткрытой двери до вас доносятся звуки музыки, гомон голосов и лязг стаканов.',
+                    topics : ['enter', 'end'],
                 },
-                fresh : {
-                    text : () => 'Вы приготовили ' + ['рагу', 'суп', 'котлеты', "пирог", "омлет", "плов"].pickRandom() + '.',
+                on_enter : {
+                    text : 'Вы толкаете и дверь и робко переступаете порог шумного заведения.',
                     script : ()=>{
-                        player.staleFoodOnKitchen = true
-                    },
-                },
-                stale : {
-                    text : 'Вчерашняя еда. Иногда нужно прикоснуться к своему прошлому, чтобы шагнуть в будующее.',
-                    script : () => {
-                        player.staleFoodOnKitchen = false;
-                    }
-                },
+						cc.controller.switchScene('clever_basic', 'door/entry');
+						cc.player.barEntered = true;
+					},
+                }
             },
             topics : {
-                fresh : {
-                    text : 'Приготовить что-нибудь',
-                    reply : 'fresh',
-                },
-                stale : {
-                    text : 'Доесть недоедки',
-                    reply : 'stale',
+                enter : {
+                    text : 'Зайти на кружечку',
+                    reply : 'on_enter',
                 },
                 end : {
-                    text : 'Не время набивать брюхо'
+                    text : 'У вас нет ни времени, ни денег на такие праздные развлечения'
                 }
             }
-        }
-    },
+		}
+		cc.director.getScene().getComponentInChildren('DlgController').playDialog(dlg);
+	},
 
-    notebook : function() {
-        var hub = [
-            'end'
-        ]
-        return {
-            start : () => {
-                if(player.pages == 0) return 'firstStart';
-                if(player.pages < 40) return 'startLow';
-                if(player.pages < 60) return 'startMed';
-                if(player.pages < 90) return 'startHigh';
-                if(player.pages <100) return 'startAlmost';
-                return 'startDone';
-            },
-            replies : {
-                firstStart : {
-                    text : 'Ваш компьютер. Белизна открытого пустого документа "диплом.doc" режет вам глаза.',
-                    topics : hub,
-                },
-                startLow : {
-                    text : () => 'Да тут ещё конь не валялся! Только ' + player.pages + ' страниц из необходимых 100',
-                    topics : hub,
-                },
-                startMed : {
-                    text : () => 'Что-то уже написано, но работы ещё непочатый край. ' + player.pages + ' из 100 страниц.',
-                    topics : hub,
-                },
-                startHigh : {
-                    text : () => 'Стоит поднажать, кажется ещё можно успеть. ' + player.pages + ' из 100 необходимых страниц.',
-                    topics : hub,
-                },
-                startAlmost : {
-                    text : () => 'Вы почти у цели, осталось всего ' + (100 - player.pages) + ' страниц!',
-                    topics : hub,
-                },
-                startDone : {
-                    text : 'Вот оно. Ваша дипломная работа наконец закончена. Теперь нужно распечатать её, одно из требований комиссии - предоставить твёрдую копию работы.',
-                    topics : 'copy',
-                },
-            },
-            topics : {
-                copy : {
-                    text : 'Доесть недоедки',
-                },
-                end : {
-                    text : 'Не сейчас, у меня ещё достаточно времени'
-                }
-            }
-        }
-    },
+	multipay : function() {
+		var dlg = {
+			start : 'start',
+			replies : {
+				start : {
+					text : 'Бип-боп бип-боп',
+					topics : ['end'],
+				}
+			},
+			topics : {
+				end : {
+					text : 'Нужно доработать этот диалог'
+				}
+			}
+		}
+		cc.director.getScene().getComponentInChildren('DlgController').playDialog(dlg);
+	},
 
+	kiosk : function () {
+		var dlg = {
+			start : 'start',
+			replies : {
+				start : {
+					text : 'Бип-боп бип-боп',
+					topics : ['end'],
+				}
+			},
+			topics : {
+				end : {
+					text : 'Нужно доработать этот диалог'
+				}
+			}
+		}
+		cc.director.getScene().getComponentInChildren('DlgController').playDialog(dlg);		
+	}
 });
 

@@ -59,32 +59,8 @@ cc.Class({
         }
     },
 
-    parkExit : function() {
-        return {
-            start : 'start',
-            replies : {
-                start : {
-                    text : 'Арка повествует о том, что не некий меценат огранизовал парк для своих любимых сограждан.',
-                    topics : ['walk', 'end'],
-                },
-                walk_reply : {
-                    text : 'Выход преграждает огромная лужа. Вам ничего не остаётся, кроме как отчаяно прошлёпать скозь неё.',
-                    script : ()=>{
-						cc.controller.switchScene('street_basic', 'park_enterance/entry');
-						cc.eventLoop.time += 60;
-					},
-                }
-            },
-            topics : {
-                walk : {
-                    text : 'Вернуться к урбанистическому пейзажу главной улицы. (10 минут)',
-                    reply : 'walk_reply'
-                },
-                end : {
-                    text : 'Позависать в парке ещё.'
-                }
-            }
-        }
+    parkEnter : function() {
+        cc.controller.switchScene('park_basic', 'park_enterance2/entry');
     },
 
     Room_enter : function() {
