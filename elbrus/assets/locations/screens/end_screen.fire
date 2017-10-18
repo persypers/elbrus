@@ -204,8 +204,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 828.18,
-      "height": 120
+      "width": 727.17,
+      "height": 80
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -239,7 +239,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Потратив столько времени своей жизни впустую\nвы так и не добились результата в науке.\n",
+    "_N$string": "You spent so much of your life wasted\nand have not achieved any results in science.",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -278,8 +278,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 835.06,
-      "height": 160
+      "width": 1067.83,
+      "height": 120
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -288,7 +288,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 683,
-      "y": 453
+      "y": 463
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -313,7 +313,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "\nВаша работа о проблемах энергетики и способах\nих решений так и не увидела свет.\n",
+    "_N$string": "\nYour work on energy problems and the methods of their solutions\nhas never been published.",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -352,8 +352,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 872.38,
-      "height": 200
+      "width": 718.89,
+      "height": 160
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -387,7 +387,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "\nЧерез некоторе время вы стали офисным клерком.\nОднажды надев свою ненавистную рубашку\nвы стали свидетелем начала топливной войны.\n",
+    "_N$string": "\nAfter a while you became an office clerk.\nOnce you put on your hateful shirt,\nyou witnessed the beginning of the fuel war.",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -426,8 +426,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 487.19,
-      "height": 80
+      "width": 579.94,
+      "height": 120
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -461,7 +461,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "\nМир сгорел на ваших глазах.",
+    "_N$string": "\n\nThe world burned before your eyes.",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -705,9 +705,7 @@
     "root": {
       "__id__": 13
     },
-    "asset": {
-      "__uuid__": "b7e04e3d-a9a2-46a0-a624-da7f28b46af5"
-    },
+    "asset": null,
     "fileId": "97bf2egkZJMLL9KNeIWPiJ3",
     "sync": false
   },
@@ -861,9 +859,7 @@
     "root": {
       "__id__": 13
     },
-    "asset": {
-      "__uuid__": "b7e04e3d-a9a2-46a0-a624-da7f28b46af5"
-    },
+    "asset": null,
     "fileId": "e8bbeLI/KhOmqviBuygyXk3",
     "sync": false
   },
@@ -1017,9 +1013,7 @@
     "root": {
       "__id__": 13
     },
-    "asset": {
-      "__uuid__": "b7e04e3d-a9a2-46a0-a624-da7f28b46af5"
-    },
+    "asset": null,
     "fileId": "be76e9zn8lCEJehqdLSLoXI",
     "sync": false
   },
@@ -1173,9 +1167,7 @@
     "root": {
       "__id__": 13
     },
-    "asset": {
-      "__uuid__": "b7e04e3d-a9a2-46a0-a624-da7f28b46af5"
-    },
+    "asset": null,
     "fileId": "ea7b5znJ21AuIL18mrZjzlM",
     "sync": false
   },
@@ -1329,9 +1321,7 @@
     "root": {
       "__id__": 13
     },
-    "asset": {
-      "__uuid__": "b7e04e3d-a9a2-46a0-a624-da7f28b46af5"
-    },
+    "asset": null,
     "fileId": "49855ZsNXhK6qhdbCpvQuj9",
     "sync": false
   },
@@ -1354,9 +1344,7 @@
     "root": {
       "__id__": 13
     },
-    "asset": {
-      "__uuid__": "b7e04e3d-a9a2-46a0-a624-da7f28b46af5"
-    },
+    "asset": null,
     "fileId": "24dd2drxsJPWZNPwDy37wnb",
     "sync": false
   },
