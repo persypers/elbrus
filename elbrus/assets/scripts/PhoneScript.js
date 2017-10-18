@@ -60,7 +60,7 @@ cc.Class({
 		this._messages.push(message);
 		var node = cc.instantiate(this.messagePrefab);
 		message.node = node;
-		node.getChildByName('sender').getComponent(cc.Label).string = typeof(message.sender) == 'string' ? message.sender : 'Напоминалкин2000';
+		node.getChildByName('sender').getComponent(cc.Label).string = typeof(message.sender) == 'string' ? message.sender : 'Remindah2000';
 		if(typeof(message.text) == 'function') {
 			message.text = message.text();
 		}

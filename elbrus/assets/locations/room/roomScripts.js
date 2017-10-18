@@ -154,12 +154,12 @@ cc.Class({
                 },
                 fresh : {
 					textRu : () => 'Вы приготовили ' + ['рагу', 'суп', 'котлеты', "пирог", "омлет", "плов"].pickRandom() + '.',
-					textRu : () => 'You made ' + ['a soup', 'some meatballs', 'a salad', "a pie", "an omelete", "a sandwich"].pickRandom() + '.',
+					text : () => 'You made ' + ['a soup', 'some meatballs', 'a salad', "a pie", "an omelete", "a sandwich"].pickRandom() + '.',
                     script : player.hunger.eatFresh,
                 },
                 stale : {
 					textRu : ()=>cc.player.blackOut ? 'Без электричества вы даже не можете разогреть свой печальный обед.' : 'Вы разогреваете и доедаете вчерашнюю еду.',
-					textRu : ()=>cc.player.blackOut ? 'With the power out you are forced to eat it cold.' : 'You warm it up and consume it.',
+					text : ()=>cc.player.blackOut ? 'With the power out you are forced to eat it cold.' : 'You warm it up and consume it.',
 					script : player.hunger.eatStale,
 				},
             },

@@ -68,7 +68,7 @@ cc.Class({
 	},
 
 	gopTalk : function() {
-		var gopTalk = () => '– ' + ['Wha?', 'Hmm?', 'Whatcha?', 'Waz?', 'Waa?', 'F?'].pickRandom() + '?'
+		var gopTalk = () => '– ' + ['Wha?', 'Hmm?', 'Whatcha?', 'Waz?', 'Waa?', 'F?', "Shat"].pickRandom() + '?'
 		
 		if(cc.player.fixedBlackOut) {
 			this.gopText.show(gopTalk());
@@ -105,37 +105,37 @@ cc.Class({
 			topics : {
 				phase_minus : {
 					//text : "Посоветовать переключить фазу на минус",
-					text : "Advice to switch phase negative",
+					text : "Advise to switch phase negative",
 					reply : 'gop',
 					script : ()=> {this._plus = !this._plus},
 				},
 				phase_plus : {
 					//text : "Посоветовать переключить фазу на плюс",
-					text : "Advice to switch phase positive",
+					text : "Advise to switch phase positive",
 					reply : 'gop',
 					script : ()=> {this._plus = !this._plus},
 				},
 				imp_plus : {
 					//text : "Посоветовать увеличить импеданс цепи",
-					text : "Advice to increase circuit impedance",
+					text : "Advise to increase circuit impedance",
 					reply : 'gop',
 					script : ()=> {this._imp = !this._imp},
 				},
 				imp_minus : {
 					//text : "Посоветовать уменьшить импеданс цепи",
-					text : "Advice to reduce circuit impedance",
+					text : "Advise to reduce circuit impedance",
 					reply : 'gop',
 					script : ()=> {this._imp = !this._imp},
 				},
 				oxy : {
 					//text : "Посоветовать инвертировать коммутатор",
-					text : "Advice to revert commutator",
+					text : "Advise to revert commutator",
 					reply : 'gop',
 					script : ()=> {this._comm = !this._comm},
 				},
 				ground : {
 					//text : "Посоветовать заземлить фазу",
-					text : "Advice to ground phase connector",
+					text : "Advise to ground phase connector",
 					reply : 'gop',
 					script : ()=>{
 						if(this._imp && this._plus && this._comm) {

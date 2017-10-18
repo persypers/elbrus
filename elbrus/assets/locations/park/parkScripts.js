@@ -161,7 +161,7 @@ cc.Class({
             replies : {
                 start : {
 					//text : () => '– ' + ['Чё', 'Мм', 'Ээ', 'Аа', 'Хуль', 'Бл'].pickRandom() + '?',
-					text : () => '– ' + ['Wha?', 'Hmm?', 'Whatcha?', 'Waz?', 'Waa?', 'F?'].pickRandom() + '?',
+					text : () => '– ' + ['Wha?', 'Hmm?', 'Whatcha?', 'Waz?', 'Waa?', 'F?', 'Shat'].pickRandom() + '?',
                     script : ()=>{
                         player.stress = true
                     },
