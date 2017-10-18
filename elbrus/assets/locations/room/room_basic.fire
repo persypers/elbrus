@@ -711,7 +711,7 @@
     "highlight": {
       "__id__": 13
     },
-    "actionText": "Компьютер"
+    "actionText": "Laptop"
   },
   {
     "__type__": "cc.Node",
@@ -1084,7 +1084,7 @@
     "highlight": {
       "__id__": 24
     },
-    "actionText": "Кухня"
+    "actionText": "Kitchen"
   },
   {
     "__type__": "cc.Node",
@@ -1402,7 +1402,7 @@
     "highlight": {
       "__id__": 35
     },
-    "actionText": "Кровать"
+    "actionText": "Bed"
   },
   {
     "__type__": "cc.Node",
@@ -2463,7 +2463,7 @@
     "highlight": {
       "__id__": 63
     },
-    "actionText": "Окно"
+    "actionText": "Window"
   },
   {
     "__type__": "cc.Node",
@@ -2914,7 +2914,7 @@
     "highlight": {
       "__id__": 74
     },
-    "actionText": "На улицу"
+    "actionText": "Exit"
   },
   {
     "__type__": "cc.Node",

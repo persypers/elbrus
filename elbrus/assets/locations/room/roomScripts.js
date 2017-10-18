@@ -36,7 +36,8 @@ cc.Class({
     behindBed : function() {
         if(!this._behindBed) {
             this._behindBed = true;
-			player.textField.show('О, монетка!');
+			//player.textField.show('О, монетка!');
+			player.textField.show('Oh, a coin!');
         }        
     },
 
@@ -47,11 +48,13 @@ cc.Class({
             start : 'start',
             replies : {
                 start : {
-                    text : 'Мелкие капли дождя скатываются по стеклу в никуда.',
+					//text : 'Мелкие капли дождя скатываются по стеклу в никуда.',
+					text : 'Tiny raindrops are eagerly sliding down the window glass.',
                     topics : topics,
                 },
                 jump_reply : {
-                    text : 'Взобравшись на подоконник, вы в последний раз оглядели своё печальное жилище и шагнули в нежные объятия неизвестности.',
+					//text : 'Взобравшись на подоконник, вы в последний раз оглядели своё печальное жилище и шагнули в нежные объятия неизвестности.',
+					text : 'You glance over you humble home one last time as you climb your way onto the window ledge. And then you step forward embracing tenderness of the unknown.',
                     script : ()=>{
 						cc.playerNode.destroy()
 						cc.player.jumpedWindow = true;
@@ -59,22 +62,26 @@ cc.Class({
 					},
                 },
                 watch_reply : {
-                    text : 'Некоторое время вы наблюдаете за уличной суетой. Вам не становится сильно легче.',
+					//text : 'Некоторое время вы наблюдаете за уличной суетой. Вам не становится сильно легче.',
+					text : "You watch street bustling for some time. It doesn't make you feel any better",
 					script : player.ideas.think.bind(this, 15),
 					topics : topics,
                 },
             },
             topics : {
                 jump : {
-                    text : 'Выброситься из окна',
+					//text : 'Выброситься из окна',
+					text : 'Throw yourself out of the window',
                     reply : 'jump_reply',
                 },
                 watch : {
-                    text : 'Созерцать мир за окном',
+					//text : 'Созерцать мир за окном',
+					text : 'Contemplate the outside world',
                     reply : 'watch_reply',
                 },
                 end : {
-                    text : 'Вернуться в насущным проблемам'
+					//text : 'Вернуться в насущным проблемам'
+					text : 'Get back to your recent problems'
                 }
             }
         }
@@ -86,37 +93,45 @@ cc.Class({
 			start : 'start',
             replies : {
                 start : {
-                    text : 'Старая скрипучая тахта, сойдёт для одиночки',
+					//text : 'Старая скрипучая тахта, сойдёт для одиночки',
+					text : 'Old creaky single bed, fits you good.',
                     topics : ['sleep8', 'sleep4', 'rest', 'end'],
                 },
                 sleep8_reply : {
-					text : 'Вы заводите будильник через 8 часов и ложитесь спать.',
+					//text : 'Вы заводите будильник через 8 часов и ложитесь спать.',
+					text : 'You set an 8-hour alarm and go to sleep',
 					script : player.fatigue.sleep8,
                 },
                 sleep4_reply : {
-					text : 'Вы заводите будильник через 4 часа и ложитесь спать.',
+					//text : 'Вы заводите будильник через 4 часа и ложитесь спать.',
+					text : 'You set a 4-hour alarm and go to sleep',
 					script : player.fatigue.sleep4,
                 },
 				rest_reply : {
-                    text : 'Это у вас получается хорошо.',
+					//text : 'Это у вас получается хорошо.',
+					text : "You're getting real good at this.",
 					script : player.ideas.think.bind(this, 30),
 				},
             },
             topics : {
                 sleep8 : {
-                    text : 'Спать 8 часов',
+					//text : 'Спать 8 часов',
+					text : 'Sleep for 8 hours',
 					reply : 'sleep8_reply',
                 },
                 sleep4 : {
-                    text : 'Спать 4 часа',
+					//text : 'Спать 4 часа',
+					text : 'Sleep for 4 hours',
 					reply : 'sleep4_reply',
                 },
 				rest : {
-                    text : 'Просто поваляться',
+					//text : 'Просто поваляться',
+					text : 'Just relax a bit',
                     reply : 'rest_reply',
                 },
                 end : {
-                    text : 'Вернуться в насущным проблемам'
+					//text : 'Вернуться в насущным проблемам'
+					text : 'Get back to your recent problems'
                 }
             }
         }
@@ -128,31 +143,40 @@ cc.Class({
 			start : 'start',
             replies : {
                 start : {
-                    text : () =>
+                    textRu : () =>
                         'Оставшаяся от предыдущих жильцов плитка помогает вам поддерживать жизнедеятельность с минимальными расходами.'
                         + (player.staleFoodOnKitchen && ' На столе лежит подсохшая еда.' || ''),
-                    topics : [()=>!cc.player.blackOut && 'fresh', ()=>player.staleFoodOnKitchen && 'stale', 'end'],
+					text : () =>
+                        'Old stove left by previous inhabitants lets you keep your vitals at minimal expenses.'
+                        + (player.staleFoodOnKitchen && ' There is some left-over food on the table.' || ''),
+
+					topics : [()=>!cc.player.blackOut && 'fresh', ()=>player.staleFoodOnKitchen && 'stale', 'end'],
                 },
                 fresh : {
-                    text : () => 'Вы приготовили ' + ['рагу', 'суп', 'котлеты', "пирог", "омлет", "плов"].pickRandom() + '.',
+					textRu : () => 'Вы приготовили ' + ['рагу', 'суп', 'котлеты', "пирог", "омлет", "плов"].pickRandom() + '.',
+					textRu : () => 'You made ' + ['a soup', 'some meatballs', 'a salad', "a pie", "an omelete", "a sandwich"].pickRandom() + '.',
                     script : player.hunger.eatFresh,
                 },
                 stale : {
-                    text : ()=>cc.player.blackOut ? 'Без электричества вы даже не можете разогреть свой печальный обед.' : 'Вы разогреваете и доедаете вчерашнюю еду.',
+					textRu : ()=>cc.player.blackOut ? 'Без электричества вы даже не можете разогреть свой печальный обед.' : 'Вы разогреваете и доедаете вчерашнюю еду.',
+					textRu : ()=>cc.player.blackOut ? 'With the power out you are forced to eat it cold.' : 'You warm it up and consume it.',
 					script : player.hunger.eatStale,
 				},
             },
             topics : {
                 fresh : {
-                    text : 'Приготовить что-нибудь',
-                    reply : 'fresh',
+                    //text : 'Приготовить что-нибудь',
+                    text : 'Cook something',					
+					reply : 'fresh',
                 },
                 stale : {
-                    text : 'Доесть недоедки',
+					//text : 'Доесть недоедки',
+					text : 'Eat left-overs',
                     reply : 'stale',
                 },
                 end : {
-                    text : 'Не время набивать брюхо'
+					//text : 'Не время набивать брюхо'
+					text : "It's no time to stuff your stomach!"
                 }
             }
         }
@@ -163,15 +187,18 @@ cc.Class({
 			start : () => player.hasLeftRoom ? 'startConfirm' : 'start',
 			replies : {
 				start : {
-					text : 'Скрип этой дверной ручки всегда ассоциируется для вас со страхом и неприязнью - чувствами, с которыми вы каждый раз покидаете своё уютное жилище и ступаете в непредсказуемый и жестокий внешний мир.',
+					//text : 'Скрип этой дверной ручки всегда ассоциируется для вас со страхом и неприязнью - чувствами, с которыми вы каждый раз покидаете своё уютное жилище и ступаете в непредсказуемый и жестокий внешний мир.',
+					text : "The feel of this door knob reminds you of fear and repulsivness. Kind of what you always feel for the outside world - the one you're leaving for.",
 					topics : ['leave_first', 'end'],
 				},
 				startConfirm : {
-					text : 'Здесь у вас есть всё необходимое для продуктивной работы в течение нескольких дней: запас продуктов, электричество и интернет. Вы уверены, что хотите уйти?',
+					//text : 'Здесь у вас есть всё необходимое для продуктивной работы в течение нескольких дней: запас продуктов, электричество и интернет. Вы уверены, что хотите уйти?',
+					text : "You sure you want to leave? You've got everything you need for a next couple of days - food, electricity, interned and a job to do.",
 					topics : ['leave', 'end']
 				},
 				leaveReply : {
-					text : 'Гулким эхом звук захлопывающейся двери разносится по подъезду.',
+					//text : 'Гулким эхом звук захлопывающейся двери разносится по подъезду.',
+					text : 'Door slam echoes eerily through the hall.',
 					script : ()=>{
 						player.hasLeftRoom = true;
 						cc.eventLoop.time += 5;
@@ -185,15 +212,18 @@ cc.Class({
 			},
 			topics : {
 				leave_first : {
-					text : 'Пересилить свою социопатию и выйти за порог',
+					//text : 'Пересилить свою социопатию и выйти за порог',
+					text : 'Get over your sociopathy and walk outside',
 					reply : 'startConfirm',
 				},
 				leave : {
-					text : 'Да, нельзя всё время отсиживаться дома',
+					//text : 'Да, нельзя всё время отсиживаться дома',
+					text : "Yes, you can't sit here forever",
 					reply : 'leaveReply',
 				},
 				end : {
-					text : 'Пожалуй, лучше будет остаться дома',
+					//text : 'Пожалуй, лучше будет остаться дома',
+					text : "Probably it's better to stay home for now",
 				}
 			}
 		}
