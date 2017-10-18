@@ -1595,7 +1595,7 @@
     "highlight": {
       "__id__": 41
     },
-    "actionText": "Выход из парка"
+    "actionText": "Park exit"
   },
   {
     "__type__": "cc.Node",
@@ -2043,7 +2043,7 @@
     "highlight": {
       "__id__": 54
     },
-    "actionText": "В университет"
+    "actionText": "University"
   },
   {
     "__type__": "cc.Node",
