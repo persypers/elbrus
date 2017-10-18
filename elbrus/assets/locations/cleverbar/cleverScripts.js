@@ -27,7 +27,7 @@ cc.Class({
                     topics : ['order', 'menu', 'end']
 				},
 				alc : {
-					text : '– Ща всё сделаем!\nБармен наполняет бокал пивом. С '
+					text : ()=>'– Ща всё сделаем!\nБармен наполняет бокал пивом. С '
 					+ ['молчаливым сожалением вы замечаете, что пива чуть меньше,', 'неподдельным восторгом вы замечаете, что пива чуть больше,', 'неподдельным восторгом вы замечаете, что пива чуть больше,'].pickRandom()
 					+ ' чем должно было быть. Вы мастерски разделываетесь с напитком.',
 					topics : ['repeat', 'end']
@@ -89,7 +89,8 @@ cc.Class({
 					text : 'Вы вступаете в разговор. Парочка радуется новому участнику разговора, который, кажется, может вывести из логического тупика, в который они угодили. Через какое-то время вы теперь уже все втроём обнаруживаете себя в пучине софистики.',
 					script : ()=>{
 						player.tatter = true;
-						return player.ideas.think(30)
+						cc.eventLoop.time += 30;
+						return player.collect('consumerismBody');
                     },
 					topics : ['final']
 				}
@@ -120,9 +121,9 @@ cc.Class({
 	},
 
 	exitScript : function() {
-				cc.controller.switchScene('park_basic', 'park_enterance1/entry');
-				cc.player.enteredPark = true;
-				cc.eventLoop.time += 5;
-		}
+		cc.controller.switchScene('street_basic', 'bar_enterance/entry');
+		cc.player.enteredPark = true;
+		cc.eventLoop.time += 5;
+	}
 });
 
