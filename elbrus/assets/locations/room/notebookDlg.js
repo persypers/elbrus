@@ -42,24 +42,31 @@ module.exports = function() {
 			startHub : {
 				text : () => {
 					if(player.pages == 0)
-						return 'Ваш компьютер. Белизна открытого пустого документа "диплом.doc" режет вам глаза.';
+						//return 'Ваш компьютер. Белизна открытого пустого документа "диплом.doc" режет вам глаза.';
+						return 'Your laptop. Shining white of empty file \"grad_paper.doc\" drives you crazy.';
 					if(player.pages < 40) 
-						return 'Да тут ещё конь не валялся! Только ' + player.pages + ' страниц из необходимых 100';
+						//return 'Да тут ещё конь не валялся! Только ' + player.pages + ' страниц из необходимых 100';
+						return "That's a lot of work ahead of you! Only " + player.pages + ' pages out of 100 required.';
 					if(player.pages < 60) 
-						return 'Что-то уже написано, но работы ещё непочатый край. ' + player.pages + ' из 100 страниц.';
+						//return 'Что-то уже написано, но работы ещё непочатый край. ' + player.pages + ' из 100 страниц.';
+						return "You've definetely managed something. But it's not enough. " + player.pages + ' pages out of 100.';
 					if(player.pages < 90) 
-						return 'Стоит поднажать, кажется ещё можно успеть. ' + player.pages + ' из 100 необходимых страниц.';
+						//return 'Стоит поднажать, кажется ещё можно успеть. ' + player.pages + ' из 100 необходимых страниц.';
+						return 'Come on, push it! You can still beat it! ' + player.pages + ' out of 100 pages.';
 					if(player.pages <100) 
-						return 'Вы почти у цели, осталось всего ' + (100 - player.pages) + ' страниц!';
+						//return 'Вы почти у цели, осталось всего ' + (100 - player.pages) + ' страниц!';
+						return 'You\'re almost there. You just need ' + (100 - player.pages) + ' more pages.';
 				},
 				topics : ideaHub,
 			},
 			ideaConverted : {
-				text : ()=> "Вы написали " + lastConvertedIdea.pages + " страниц.",
+				//text : ()=> "Вы написали " + lastConvertedIdea.pages + " страниц.",
+				text : ()=> "You wrote " + lastConvertedIdea.pages + " pages.",
 				script : () => {
 					var replyText = lastConvertedIdea && lastConvertedIdea.replyText || '';
 					if(player.internetExpired && !player.internetPaid) {
-						replyText += ' Из-за отсутствия интернета у вас ушло сильно больше времени на подготовку картинок и схем и редактирование текста.';
+						//replyText += ' Из-за отсутствия интернета у вас ушло сильно больше времени на подготовку картинок и схем и редактирование текста.';
+						replyText += ' Lack of internet access slows you down - you spend twice as much time drawing you own figures and editing text.';
 						cc.eventLoop += 60;
 					}
 					if(replyText.length > 0) return replyText;
@@ -67,7 +74,8 @@ module.exports = function() {
 				topics : ideaHub,
 			},
 			startDone : {
-				text : 'Вот оно. Ваша дипломная работа наконец закончена. Теперь нужно распечатать её, одно из требований комиссии - предоставить твёрдую копию работы.',
+				//text : 'Вот оно. Ваша дипломная работа наконец закончена. Теперь нужно распечатать её, одно из требований комиссии - предоставить твёрдую копию работы.',
+				text : 'This is it, your paper is finally finished. Now you need to print a hard copy of it.',
 				topics : 'copy',
 			},
 			end_no_idea : {
@@ -78,17 +86,20 @@ module.exports = function() {
 				}
 			},
 			no_power : {
-				text : 'Аккумулятор вашего ноутбука давным давно перестал подавать признаки жизни. Без электричества продолжить работу не получится.',
+				//text : 'Аккумулятор вашего ноутбука давным давно перестал подавать признаки жизни. Без электричества продолжить работу не получится.',
+				text : "Your laptop's battery has died long ago. There's no way it'll work without power source.",
 			}
 		},
 		topics : {
 			writeBland : {
-				text : "Писать диплом",
+				//text : "Писать диплом",
+				text : "Work on your graduation paper",
 				script : () => {
 					var pages = Math.floor(Math.random() * 3 + 1);
 					var replyText;
 					if(player.blandPages == 0) {
-						replyText = 'С твёрдыми намерениями и пустой головой вы принимаетесь за работу. Разве это может быть слишком сложно? В конце концов вы обученный специалист в своей области, и пора вам доказать это всем сомневающимся.';
+						//replyText = 'С твёрдыми намерениями и пустой головой вы принимаетесь за работу. Разве это может быть слишком сложно? В конце концов вы обученный специалист в своей области, и пора вам доказать это всем сомневающимся.';
+						replyText = "Adamant and absentminded you get down to work. This should be easy, you're a trained specialist afterall!";
 					}
 					player.pages += pages;
 					player.blandPages += pages;
@@ -99,17 +110,20 @@ module.exports = function() {
 				reply : 'ideaConverted',
 			},
 			finish : {
-				text : 'Оформить титульный лист и содержание',
+				//text : 'Оформить титульный лист и содержание',
+				text : 'Attach cover',
 				script : () => {
 					cc.eventLoop.time += 30;
 				},
 				reply : 'startDone'
 			},
 			copy : {
-				text : 'Скопировать диплом.doc на флешку',
+				//text : 'Скопировать диплом.doc на флешку',
+				text : 'Copy "grad_paper.doc" to a flash drive',
 			},
 			end : {
-				text : 'Не сейчас, у меня ещё достаточно времени'
+				//text : 'Не сейчас, у меня ещё достаточно времени'
+				text : 'Not now, I still have plenty of time'
 			},
 			end_no_idea : {
 				text : 'Попытаться сконцентрирваться на дипломе',
