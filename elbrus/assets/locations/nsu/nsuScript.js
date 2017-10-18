@@ -30,91 +30,139 @@ cc.Class({
         }        
     },
 
-    klavdiaDlg : function() {
+    locked : function() {
+        player.textField.show('Library is closed.')
+    },
+
+    benchWaiting : function() {
         return {
             start : 'start',
             replies : {
                 start : {
-                    text : 'Неприветливый тяжелый взгляд этой женщины буквально плавит вас.',
+                    text : 'Rigid bench, very typical for public institutions.', //Жесткая скамья, очень типичная для государственных учреждений
+                    topics : [()=>player.klavdiaAsk && 'wait', 'end']
+                },
+                waited : {
+                    text : 'Seems like you`ve waited enough.'
+                }
+            },
+            topics : {
+                wait : {
+                    text : 'Wait for Klavdia to look up for your name (10 min)',
+                    script : ()=>{
+                        cc.eventLoop.time += 10;
+                        player.klavdiaWaited = true;
+                    },
+                    reply : '',
+                },
+                end : {
+                    text : 'Go away.'
+                }
+            }
+        }
+    },
+
+    klavdiaDlg : function() {
+        return {
+            start : ()=>player.klavdiaWaited?'anger' : 'start',
+            replies : {
+                start : {
+                    text : 'The ungainly stare of this woman literally melts you.', //Неприветливый тяжелый взгляд этой женщины буквально плавит вас.
                     topics : ['library', 'pass', 'ask', 'end'],
                 },
                 library_reply : {
-                    text : '– Вход только по студенческим пропускам. Уже 40 раз вам сказала!',
+                    text : '- Entry allowed only with student ID! How many times do I have to tell you this? Forty?', //– Вход только по студенческим пропускам. Уже 40 раз вам сказала!
                     topics : ['noyoudont', 'pass', 'ask', 'end'],
                 },
                 noyoudont_reply : {
-                    text : '– Молодой человек! Я сейчас вызову охрану! Идите мешайте кому-нибудь другому!',
+                    text : '- Young man! I`ll call security now! Go get in the way of someone else!', // - Молодой человек! Я сейчас вызову охрану! Идите мешайте кому-нибудь другому!
                     topics : ['pass', 'end']
                 },
                 pass_reply : {
-                    text : '– И что я должна вам? Мне теперь танцевать чтоли?!',
+                    text : '- And what should I do now? Dance?!', //– И что я должна вам? Мне теперь танцевать чтоли?!
                     topics : ['restore', 'end']
                 },
                 go_sit : {
-                    text : '– Идите, посидите на лавочке, пока я посмотрю...',
+                    text : '– Go and sit on the bench. I see what I can do...', //– Идите, посидите на лавочке, пока я посмотрю что можно сделать...
+                    script : ()=>{
+						player.klavdiaAsk = true
+					},
                     topics : ['end']
                 },
                 ask_reply1 : {
-                    text : '– Потихоньку-помальеньку. Сижу тут, смотрю как ходят всякие.',
+                    text : '- Slowly, little by little. I`m sitting here, I watch all sorts of things.', //– Потихоньку-помальеньку. Сижу тут, смотрю как ходят всякие.
                     topics : ['ask2', 'end']
                 },
                 ask_reply2 : {
-                    text : '– Потихоньку-помальеньку. Сижу тут, смотрю как ходят всякие.',
+                    text : '- Not really. I am sitting, solving crossword puzzles. Look at my friends - retired whiners. I have nothing to complain about.', // Не очень. Сижу разгадываю кроссворды. Чо мне сделается то? Вон у подруг моих вообще работы нет – сидят на пенсии. А мне грех жаловаться.
                     topics : ['ask3', 'end']
                 },
                 ask_reply3 : {
-                    text : '– Потихоньку-помальеньку. Сижу тут, смотрю как ходят всякие.',
+                    text : 'Ah, whatever. I`m still alive, thank God, thats all that matters.', //Хорошо не хорошо, но пока жива, слава богу.
                     topics : ['restore_succes', 'end']
+                },
+                go : {
+                    text : 'The woman sighs heavily, then presses the button. The turnstile opens. You can enter now.' //Нет русика
+                },
+                anger : {
+                    text : '- You again?',
+                    topics : ['what'],
                 }
             },
             topics : {
                 library : {
-                    text : 'Спросить, можно ли вам пройти в библиотеку.',
+                    text : 'Ask if you can go to the library.', //Спросить, можно ли вам пройти в библиотеку.
                     reply : 'library_reply',
                 },
                 pass : {
-                    text : 'Признаться, что вы потеряли студенческий пропуск.',
+                    text : 'Admit that you have lost your student ID.', //Признаться, что вы потеряли студенческий пропуск.
                     script : ()=>{
 						player.klavdiaAnger += 1
 					},
                     reply : 'pass_reply',
                 },
                 noyoudont : {
-                    text : 'Кротко заметить, что она ещё ни разу вам про это не говорила.',
+                    text : 'Humbly note that she has never told you about that.', //Кротко заметить, что она ещё ни разу вам про это не говорила.
                     script : ()=>{
 						player.klavdiaAnger += 1
 					},
                     reply : 'noyoudont_reply'
                 },
+                what : {
+                    text : 'Ask if she looked at the list',
+                    reply : 'library_reply'
+                },
                 ask : {
-                    text : 'Спросить как идёт её служба.',
+                    text : 'Ask how her job is going.', //Спросить как идёт её служба.
                     reply : 'ask_reply1',
                 },
                 ask2 : {
-                    text : 'Поинтересоваться тяжело ли сидеть тут целыми днями.',
+                    text : 'Ask if is it hard for her to stay here all day.', //Поинтересоваться тяжело ли сидеть тут целыми днями.
                     reply : 'ask_reply2'
                 },
                 ask3 : {
-                    text : 'Сказать, что это прекрасно, что у неё нет.',
+                    text : 'Say that it is wonderful, that she is doing well.', //Сказать, что это прекрасно, что у неё всё хорошо.
                     reply : 'ask_reply3'
                 },
                 restore : {
-                    text : 'Попросить найти вас в списке студентов, чтобы пройти без пропуска.',
+                    text : 'Ask her to find you on the list of students to pass without an ID.', //Попросить найти вас в списке студентов, чтобы пройти без пропуска.
                     reply : 'go_sit'
                 },
                 restore_succes : {
-                    text : 'Вежливо попросить найти вас в списке студентов, чтобы пройти без пропуска.',
+                    text : 'Politely ask her to find you on the list of students to pass without an ID.', // Вежливо попросить найти вас в списке студентов, чтобы войти без пропуска.
                     script : ()=>{
                         cc.find("tourniquet", cc.scene.node).active = false;
                     },
-                    reply : 'go_wait'
+                    reply : 'go'
                 },
                 end : {
-                    text : 'Отказаться от дальнейших попыток коммуникации.'
+                    text : 'Leave further communication attempts.' //Отказаться от дальнейших попыток коммуникации.
                 }
             }
         }
     },
+
+
 
     parkEnter : function() {
         cc.controller.switchScene('park_basic', 'park_enterance2/entry');

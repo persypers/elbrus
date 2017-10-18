@@ -14,7 +14,7 @@ cc.Class({
 	start : function() {
 		if(player.jumpedWindow) {
 			player.jumpedWindow = false;
-			cc.eventLoop.push({time : 1, handler : ()=>{cc.player.say('Это первый этаж. Сомнительная затея.')}})
+			cc.eventLoop.push({time : 1, handler : ()=>{cc.player.say('This is the first floor. It` was a stupid idea.')}}) //Это первый этаж. Сомнительная затея.
 		}
 		//cc.controller.getComponent(cc.AudioSource).play();
 	},
@@ -32,7 +32,7 @@ cc.Class({
 			if(cc.player.blackOut && cc.player.electricianCalled) {
 				cc.controller.switchScene('porch', 'streetDoor/entry');
 			} else {
-				cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Дом, милый дом')});
+				cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Home, sweet home!')});//Дом, милый дом
 				cc.eventLoop.time += 5;
 			}
 			return;
@@ -41,26 +41,26 @@ cc.Class({
             start : 'start',
             replies : {
                 start : {
-                    text : 'Обычный человеческий вход в общежитие. Краска на дверях облупилась и покрылась несколькими слоями объявлений.',
+                    text : 'Normal human entrance to the dormitory. The paint on the doors peeled off and was covered with several layers of ads.', //Обычный человеческий вход в общежитие. Краска на дверях облупилась и покрылась несколькими слоями объявлений.
                     topics : ['enter', 'end'],
                 }
             },
             topics : {
                 enter : {
-                    text : 'Войти в общежитие',
+                    text : 'Enter the dormitory.',//Войти в общежитие
                     reply : 'enter_reply',
 					script: ()=>{
 						if(cc.player.blackOut && cc.player.electricianCalled) {
 							cc.controller.switchScene('porch', 'streetDoor/entry');
 						} else {
-							cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Дом, милый дом')});
+							cc.controller.switchScene('room_basic', 'door/entry', ()=>{cc.player.say('Home, sweet home!')});//Дом, милый дом
 						}
 						cc.player.streetToRoomEntered = true;
 						cc.eventLoop.time += 5;
 					}
 				},
                 end : {
-                    text : 'Смутившись отойти'
+                    text : 'Walk away in confusion.'//Смутившись отойти
                 }
             }
 		}
@@ -72,16 +72,16 @@ cc.Class({
             start : 'start',
             replies : {
                 start : {
-                    text : 'Кажется, это окно вашей комнаты общежития. Хотя, нет... Это точно окно вашей комнаты общежития.',
+                    text : 'It seems this is the window of your dorm room. Although, no ... It`s exactly the window of your dorm room.',//Кажется, это окно вашей комнаты общежития. Хотя, нет... Это точно окно вашей комнаты общежития.
                     topics : ['inspect', 'enter', 'end'],
                 },
                 inspect_reply : {
-                    text : 'С этой стороны угрюмая комната уже не кажется таким ужасным местом. Но мысли о предстоящей работе отвратительно отзываются горечью в груди.',
+                    text : 'From this side the sullen room no longer seems to be so terrible. But the thoughts about the work ahead are repulsive in bitterness in the chest.',//С этой стороны угрюмая комната уже не кажется таким ужасным местом. Но мысли о предстоящей работе отвратительно отзываются горечью в груди.
 					script : cc.player.ideas.collect.bind(cc.player.ideas, 'examplesBody'),
 					topics : ['enter', 'end'],
                 },
                 enter_reply : {
-                    text : 'Размазывая ботинками грязь, вы залезаете в свою комнату . В процессе вас не покидает вопрос "Зачем?".',
+                    text : 'Smudging the boots with dirt, you climb into your room. The question "Why?" do not leave you in the process.',//Размазывая ботинками грязь, вы залезаете в свою комнату . В процессе вас не покидает вопрос "Зачем?".
 					script: ()=>{
 						cc.controller.switchScene('room_basic', 'window/entry');
 						cc.eventLoop.time += 20;
@@ -90,15 +90,15 @@ cc.Class({
             },
             topics : {
                 inspect : {
-                    text : "Заглянуть в окно",
+                    text : "Look in the window.",//Заглянуть в окно
                     reply : 'inspect_reply',
                 },
                 enter : {
-                    text : 'Попытаться залезть',
+                    text : 'Try to climb.',//Попытаться залезть
                     reply : 'enter_reply',
                 },
                 end : {
-                    text : 'Продолжить мокнуть под дождём.'
+                    text : 'Continue to wet in the rain.'//Продолжить мокнуть под дождём.
                 }
             }
         }
@@ -113,11 +113,11 @@ cc.Class({
             start : 'start',
             replies : {
                 start : {
-                    text : 'Арка повествует о том, что не некий меценат огранизовал парк для своих любимых сограждан.',
+                    text : 'The arch tells that a patron bound the park for his beloved fellow citizens.',//Арка повествует о том, что не некий меценат огранизовал парк для своих любимых сограждан.
                     topics : ['enter', 'end'],
                 },
                 jump_reply : {
-                    text : 'Перепрыгнув одну лужу, вы случайно наступаете в другу. Зато вы в парке.',
+                    text : 'After jumping one puddle, you accidentally step into the other. But you are in the park, at least.',//Перепрыгнув одну лужу, вы случайно наступаете в другу. Зато вы в парке.
                     script : ()=>{
 						cc.controller.switchScene('park_basic', 'park_enterance1/entry');
 						cc.player.enteredPark = true;
@@ -127,11 +127,11 @@ cc.Class({
             },
             topics : {
                 enter : {
-                    text : 'Войти в парк в поисках просветления.',
+                    text : 'Enter the park in search of enlightenment.',//Войти в парк в поисках просветления.
                     reply : 'jump_reply',
                 },
                 end : {
-                    text : 'Остаться на здесь.'
+                    text : 'Stay on here.'
                 }
             }
 		}
@@ -147,11 +147,11 @@ cc.Class({
             start : 'start',
             replies : {
                 start : {
-                    text : 'Из приоткрытой двери до вас доносятся звуки музыки, гомон голосов и лязг стаканов.',
+                    text : 'From the slightly opened door you hear the sounds of music, the hubbub of voices and the clatter of glasses.',//Из приоткрытой двери до вас доносятся звуки музыки, гомон голосов и лязг стаканов.
                     topics : ['enter', 'end'],
                 },
                 on_enter : {
-                    text : 'Вы толкаете и дверь и робко переступаете порог шумного заведения.',
+                    text : 'You push the door and shyly cross the threshold of a noisy institution.',//Вы толкаете и дверь и робко переступаете порог шумного заведения.
                     script : ()=>{
 						cc.controller.switchScene('clever_basic', 'door/entry');
 						cc.player.barEntered = true;
@@ -160,11 +160,11 @@ cc.Class({
             },
             topics : {
                 enter : {
-                    text : 'Зайти на кружечку',
+                    text : 'Go for one beer.',//Зайти на кружечку
                     reply : 'on_enter',
                 },
                 end : {
-                    text : 'У вас нет ни времени, ни денег на такие праздные развлечения'
+                    text : 'You do not have neither the time nor the money for such idle entertainment.'//У вас нет ни времени, ни денег на такие праздные развлечения
                 }
             }
 		}
@@ -176,13 +176,20 @@ cc.Class({
 			start : 'start',
 			replies : {
 				start : {
-					text : 'Бип-боп бип-боп',
-					topics : ['end'],
+					text : 'The terminal panel is flooded with rain. With difficulty you will recognize the icons of familiar brands.', //Панель терминала залита дождём. С трудом вы узнаете иконки знакомых брендов.
+					topics : [()=>player.veronikaAsk&&!player.fixedBlackOut&&'electr', 'end'],
 				}
 			},
 			topics : {
 				end : {
-					text : 'Нужно доработать этот диалог'
+					text : 'Dejectedly go away.'
+				},
+				electr : {
+					text : 'It seems you can see the way to get an electrician to your address.',
+					script : ()=>{
+						player.electricianCalled = true;
+					},
+					reply : 'start'
 				}
 			}
 		}
@@ -194,13 +201,21 @@ cc.Class({
 			start : 'start',
 			replies : {
 				start : {
-					text : 'Бип-боп бип-боп',
-					topics : ['end'],
+					text : 'A woman stares through you with tired eyes.',
+					topics : [()=>player.blackOut&&!player.electricianCalled&&'ask', 'end'],
+				},
+				terminal : {
+					text : '– Order everything you need with terminal.',
+					topics : ['end']
 				}
 			},
 			topics : {
-				end : {
-					text : 'Нужно доработать этот диалог'
+				ask : {
+					text : 'Ask how you call an electrician.',
+					script : ()=>{
+						player.veronikaAsk = true;
+					},
+					reply : 'terminal'
 				}
 			}
 		}
