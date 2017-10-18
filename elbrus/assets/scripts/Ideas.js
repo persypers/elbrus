@@ -3,27 +3,27 @@ var ideas = {
 		collected : true,
 		converted : false,
 		pages : 8,
-		topicText : 'Обозначить вступление через проблематику мировой энергетики сегодня',
-		replyText : "У вас неплохо получилось перейти от общего к частному - теме вашего диплома. Должно зацепить внимательного читателя.",
-		collectText : 'Вам в голову пришла идея, как растянуть общие знания по теме на несколько страниц вступления к диплому.',
+		topicText : 'Outline an introduction describing today’s global energy problem.',
+		replyText : "You’ve done a good job at descending from general ideas to specific issues - the subject of your paper. The text will definitely get the attention of a curious reader.",
+		collectText : 'You’ve got an idea on how to turn your general knowledge on the subject into a several-page introduction to the diploma.',
 	},
 	
 	consumerismBody : {
 		collected : false,
 		converted : false,
 		pages : 17,
-		topicText : 'Обратить внимание на неэффективность расхода энергии в условиях, так называемого, "Общества потребления".',
-		replyText : "Вам удаётся развить мысль, сослаться на зависимость развития энергетики от социо-экономических факторов. Ничего сверхестественного, но мысль довольно плотная.",
-		collectText : 'Осознание непрактичности некоторых решений принятых обществом за норму наводит вас на размышления о необходимости создания правильного образа возобновляемых ресурсов.',
+		topicText : 'Point out the problem of inefficient energy use in the so called “consumerist society”.',
+		replyText : "You manage to elaborate on your idea and refer to the influence of socio-economic factors on the development of energy industry. Nothing sensational, but the idea is quite solid.",
+		collectText : 'Realization of how impractical some socially accepted decisions about energy use are, makes you want to create a positive image of renewable resources in your paper.',
 	},
 	
 	examplesBody : {
 		collected : false,
 		converted : false,
 		pages : 9,
-		topicText : 'Сослаться на положительные примеры других стран.',
-		replyText : "Набрав несколько примеров стран перешедших на следующий качественный уровень использования энергетических ресурсов, вы выявляете несколько важных закономерностей.",
-		collectText : '"А у других как?.." – эхом проносится в вашей голове. Кажется, неплохо было бы обратиться к опыту экономик других стран.',
+		topicText : 'Relate to the positive experience of other countries.',
+		replyText : "Having listed several examples of the countries that switched to next-generation energy use, you reveal some important trends.",
+		collectText : "The phrase “What about others?...” echoes in your brain. It seems reasonable to refer to the economic experience of other countries.",
 	},
 	
 	// График роста и изменений
@@ -31,9 +31,9 @@ var ideas = {
 		collected : false,
 		converted : false,
 		pages : 7,
-		topicText : 'Изучить статистические данные за последние 50 лет, и приложить обнародованные прогнозы.',
-		replyText : "Ваш документ теперь украшают несколько красивых объёмных графиков. Слава шаблонам оформления – веселенькие цвета придают оптимизма вашему документу. Но не вам.",
-		collectText : 'Внезапно перед вашими глазами рисуется стройная диаграмма… Вы не понимаете как и почему, но слово СТАТИСТИКА начинает приятно греть вам сердце.',
+		topicText : 'Study the statistical data from the past 50 years and enclose some published estimates and predictions.',
+		replyText: "Your paper can now boast some impressive diagrams. Thanks to bright-colored templates, your document is now looking more optimistic. But not you.",
+		collectText : 'Suddenly, a well-composed diagram appears before your eyes. You don’t realize why, but the word STATISTICS is now making you feel very good.',
 	},
 	
 	//Экологическая сторона
@@ -41,9 +41,9 @@ var ideas = {
 		collected : false,
 		converted : false,
 		pages : 16,
-		topicText : 'Спровоцировать читателя, представив ему в красках возможную экологическую катастрофу.',
-		replyText : "Несколько ненаучным и неожиданно художественным языком вы описываете возможное безрадостное будущее. Клише в духе Фоллаута кажутся излишними, но вы не в силах их удалить.",
-		collectText : 'Вы ловите себя на том, что представляете себе мир будущего. Безрадостное болото очень впечатляет вас. Вам очень хочется поделиться этим захватывающим и реалистичным образом.',
+		topicText : 'Provoke the reader depicting in living color a possible ecological catastrophe.',
+		replyText : "In a bit unscientific and unexpectedly artistic manner you describe the cheerless future that probably awaits us. “Fallout”-style cliches seem redundant, but you can’t resist the temptation to throw them in.",
+		collectText : 'You find yourself envisioning the world of tomorrow. The huge bleak swamp that you see impresses you deeply. You really want to share this realistic and captivating image with the reader.',
 	},
 	
 	//Заинтересованность потребителей
@@ -51,9 +51,9 @@ var ideas = {
 		collected : false,
 		converted : false,
 		pages : 8,
-		topicText : 'Порассуждать на тему заинтересованности потребителей в альтернативных источниках энергии.',
-		replyText : "Пламенной речью заправского политика вы призываете читателя пользоваться новейшими, безопасными, инновационными... Этими... Как их... А, не важно.",
-		collectText : 'Постепенно вы начинаете размышлять о том, насколько вы были слепы к окружающему миру. Не желая нести за это ответственность в одиночку, вы задумываетесь, о том, что кто-нибудь мог бы указать вам на это раньше.',
+		topicText: 'Speculate on the topic of how much consumers should be interested in renewable energy sources.',
+		replyText : "In a passionate manner of a typical politician you encourage the reader to use the newest, safest, most innovative...what do you call them?...Ah, whatever.",
+		collectText : 'Little by little, you start realizing how ignorant you’ve been of the world around you. Refusing to take the sole responsibility for such ignorance, you start wondering why someone didn’t point this out to you earlier.',
 	},
 	
 	//Заинтересованность производителей
@@ -61,9 +61,9 @@ var ideas = {
 		collected : false,
 		converted : false,
 		pages : 11,
-		topicText : 'Перечислить несколько преимуществ возобновляемых источников энергии для производителей техники.',
-		replyText : "Текст который вы выдали больше напоминает имиджевую брошюру какого-нибудь предприятия. Вы так и видите перед собой масляный взгляд какого-нибудь архитипичного хозяйственника.",
-		collectText : 'Упрямство и алчность некоторых представителей человеческого рода внезапно заставляет вас вспыхнуть праведным гневом. Немного успокоившись вы, кажется, можете найти несколько доводов, чтобы их переубедить.',
+		topicText : 'Enumerate several benefits of renewable energy sources for manufacturers.',
+		replyText : "The text you’ve written looks more like an advertising material. You envision the cunning eyes of a typical factory manager.",
+		collectText : 'People’s stubbornness and greediness suddenly make you burst in righteous anger. Eventually you calm down and start looking for the ways to convince them to change their minds.',
 	},
 	
 	//Заинтересованность смежных отраслей
@@ -71,9 +71,9 @@ var ideas = {
 		collected : false,
 		converted : false,
 		pages : 10,
-		topicText : 'Указать на то, что образ "экологичности", давно уже нуждается в переосмыслении.',
-		replyText : "Оптимус прайм использующий солнечные батареи. Нефтяник – архетип злодея бондианы... Остановив поток этих ненужных поп культурных спекуляций вы всё таки затрагиваете тему правильного позиционирования экологичного топлива.",
-		collectText : 'Вы пытаетесь посмотреть на себя чужими глазами. Насмотревшись на это недоразумение, вы приходите к выводу, что многое можно изменить в общественном мнении, если чуть изменить угол. Кроме сферы, конечно.',
+		topicText : 'Point out that the image associated with “environmental friendliness” needs to be rethought and modernized.',
+		replyText : "Optimus Prime using solar batteries. Oil rig worker as an archetypal James Bond villain...You suppress the flow of unnecessary pop-culture images and finally touch upon the topic of correct presentation of eco-friendly fuel to the public.",
+		collectText : 'You’re trying to view yourself from the outside. Having looked enough at the unlucky creature you are, you realize that a lot could be changed in the public opinion if you make people look at the problem from a different angle.',
 	},
 	
 	//Государственное регулирование
@@ -81,9 +81,9 @@ var ideas = {
 		collected : false,
 		converted : false,
 		pages : 5,
-		topicText : 'Отметить приоритеты государства в вопросе возобновляемых ресурсов.',
-		replyText : "Вы описываете несколько способов регулирования отрасли. Сжав в кулак свои либеральные взгляды вы даже составляете систему обязательной модернизации производств.",
-		collectText : 'Неожиданно всё окружающее кажется вам жуткой дистопией. Поразмыслив над этим немного и прикинув альтернативы, вы решаете, что она не такая уж и жуткая.',
+		topicText : 'Enumerate the profits of using the renewable resources for the government. Отметить приоритеты государства в вопросе возобновляемых ресурсов.',
+		replyText : "You describe several ways of regulating the industry. Swallowing your liberal pride, you even lay down a system of obligatory modernization of factories.",
+		collectText : 'Suddenly, it feels like a horrible dystopia. But thinking it over and imagining the alternatives, you decide it’s not that much horrible.',
 	},
 	
 	// Предсказание
@@ -91,9 +91,9 @@ var ideas = {
 		collected : false,
 		converted : false,
 		pages : 6,
-		topicText : 'Процитировать футурологов высказавшихся о возможных путях развития энергетической промышленности.',
-		replyText : "Радужные рассуждения некоторых околонаучных деятелей добавляют вашему диплому оптимистичности. Возможно зря, но кому-то может понравиться.",
-		collectText : 'Вы задумываетесь над своим будущим. Планировать, как вытащить его из болота уже слишком поздно. А вот у человечества, возможно, ещё есть немного времени. Возможно...',
+		topicText : 'Quote the futurologists who discussed the possible ways of developing the energy industry.',
+		replyText : "Pictures of the bright future painted by these pseudo-scientists make your text sound more optimistic. Maybe you shouldn’t have added this part, but some readers might like it.",
+		collectText : 'You start thinking about your own future. For you, it’s too late to make things right. But humanity, maybe, still has some time. Maybe...',
 	}	
 };
 
