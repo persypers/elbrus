@@ -30,6 +30,7 @@ cc.Class({
 
 	start : function() {
 		this.flipLights();
+		this._imp = true;
 	},
 
 	flipLights : function() {
@@ -52,13 +53,14 @@ cc.Class({
 	},
 
 	fuseBox : function() {
-		this.gopText.show('Э, малой, руки убери!');
+		//this.gopText.show('Э, малой, руки убери!');
+		this.gopText.show('Ei, hands off, kiddo!');
 	},
 
 	bumpGop : function() {
 		if(this.bumpDelay) return;
 		this.bumpDelay = true;
-		this.gopText.show('Э, чё широкий сильно?');
+		this.gopText.show('Whatcha, too wide?');
 		this.node.runAction(cc.sequence([
 			cc.delayTime(3),
 			cc.callFunc(()=>{this.bumpDelay = false})
@@ -66,7 +68,7 @@ cc.Class({
 	},
 
 	gopTalk : function() {
-		var gopTalk = () => '– ' + ['Чё', 'Мм', 'Ээ', 'Аа', 'Хуль', 'Бл'].pickRandom() + '?'
+		var gopTalk = () => '– ' + ['Wha?', 'Hmm?', 'Whatcha?', 'Waz?', 'Waa?', 'F?'].pickRandom() + '?'
 		
 		if(cc.player.fixedBlackOut) {
 			this.gopText.show(gopTalk());
@@ -88,7 +90,8 @@ cc.Class({
 								anim && anim.stop();
 							});
 							this.isDark = false;
-							cc.eventLoop.push({time : 2, handler : ()=>{this.gopText.show('Дело мастера боится, ёпта')}});
+							//cc.eventLoop.push({time : 2, handler : ()=>{this.gopText.show('Дело мастера боится, ёпта')}});
+							cc.eventLoop.push({time : 2, handler : ()=>{this.gopText.show('Nailed it')}});
 						}
 					},
 					topics : [
@@ -101,32 +104,38 @@ cc.Class({
 			},
 			topics : {
 				phase_minus : {
-					text : "Посоветовать переключить фазу на минус",
+					//text : "Посоветовать переключить фазу на минус",
+					text : "Advice to switch phase negative",
 					reply : 'gop',
 					script : ()=> {this._plus = !this._plus},
 				},
 				phase_plus : {
-					text : "Посоветовать переключить фазу на плюс",
+					//text : "Посоветовать переключить фазу на плюс",
+					text : "Advice to switch phase positive",
 					reply : 'gop',
 					script : ()=> {this._plus = !this._plus},
 				},
 				imp_plus : {
-					text : "Посоветовать увеличить импеданс цепи",
+					//text : "Посоветовать увеличить импеданс цепи",
+					text : "Advice to increase circuit impedance",
 					reply : 'gop',
 					script : ()=> {this._imp = !this._imp},
 				},
 				imp_minus : {
-					text : "Посоветовать уменьшить импеданс цепи",
+					//text : "Посоветовать уменьшить импеданс цепи",
+					text : "Advice to reduce circuit impedance",
 					reply : 'gop',
 					script : ()=> {this._imp = !this._imp},
 				},
 				oxy : {
-					text : "Посоветовать инвертировать коммутатор",
+					//text : "Посоветовать инвертировать коммутатор",
+					text : "Advice to revert commutator",
 					reply : 'gop',
 					script : ()=> {this._comm = !this._comm},
 				},
 				ground : {
-					text : "Посоветовать заземлить фазу",
+					//text : "Посоветовать заземлить фазу",
+					text : "Advice to ground phase connector",
 					reply : 'gop',
 					script : ()=>{
 						if(this._imp && this._plus && this._comm) {
@@ -143,7 +152,8 @@ cc.Class({
 				},
 
 				end : {
-					text : 'Не стоит мешать специалисту делать свою работу.',
+					//text : 'Не стоит мешать специалисту делать свою работу.',
+					text : "It's better not to get in a way of a trained professional.",
 				}
 			}
 		}
