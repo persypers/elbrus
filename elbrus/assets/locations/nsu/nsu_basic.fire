@@ -63,7 +63,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 89
+        "__id__": 88
       }
     ],
     "_prefab": null,
@@ -121,32 +121,32 @@
         "__id__": 23
       },
       {
-        "__id__": 33
+        "__id__": 32
       },
       {
-        "__id__": 42
+        "__id__": 41
       },
       {
-        "__id__": 53
+        "__id__": 52
       },
       {
-        "__id__": 62
+        "__id__": 61
       },
       {
-        "__id__": 67
+        "__id__": 66
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
+        "__id__": 85
+      },
+      {
         "__id__": 86
       },
       {
         "__id__": 87
-      },
-      {
-        "__id__": 88
       }
     ],
     "_prefab": null,
@@ -833,7 +833,10 @@
         "__id__": 24
       },
       {
-        "__id__": 29
+        "__id__": 26
+      },
+      {
+        "__id__": 28
       }
     ],
     "_tag": -1,
@@ -878,7 +881,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "bench",
+    "_name": "tour",
     "_objFlags": 0,
     "_parent": {
       "__id__": 23
@@ -889,15 +892,6 @@
     "_components": [
       {
         "__id__": 25
-      },
-      {
-        "__id__": 26
-      },
-      {
-        "__id__": 27
-      },
-      {
-        "__id__": 28
       }
     ],
     "_prefab": null,
@@ -964,67 +958,8 @@
     "_atlas": null
   },
   {
-    "__type__": "cc.Animation",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 24
-    },
-    "_enabled": false,
-    "_defaultClip": {
-      "__uuid__": "87fb3a3e-f8b5-4f23-bfc0-74b65cb35cb4"
-    },
-    "_clips": [
-      {
-        "__uuid__": "87fb3a3e-f8b5-4f23-bfc0-74b65cb35cb4"
-      }
-    ],
-    "playOnLoad": false
-  },
-  {
-    "__type__": "21685ccP8FC6q3vrtbW5dwq",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 24
-    },
-    "_enabled": false,
-    "_kernelRadius": 4,
-    "_radius": 6,
-    "_strength": 0,
-    "_paddingEnabled": true,
-    "_paddedShader": false,
-    "_color": [
-      0.9529411764705882,
-      0.9019607843137255,
-      0.30196078431372547,
-      1
-    ],
-    "_outlineColor": {
-      "__type__": "cc.Color",
-      "r": 243,
-      "g": 230,
-      "b": 77,
-      "a": 255
-    }
-  },
-  {
-    "__type__": "893ad83L3RBhIM5K5iQsXuB",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 24
-    },
-    "_enabled": false,
-    "clip": null,
-    "animation": null,
-    "disableNode": false,
-    "mouseEnterHover": false,
-    "cursorStyleEnables": false
-  },
-  {
     "__type__": "cc.Node",
-    "_name": "bench_collider",
+    "_name": "tour_obstacle",
     "_objFlags": 0,
     "_parent": {
       "__id__": 23
@@ -1034,13 +969,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 30
-      },
-      {
-        "__id__": 31
-      },
-      {
-        "__id__": 32
+        "__id__": 27
       }
     ],
     "_prefab": null,
@@ -1070,7 +999,7 @@
     "_scaleY": 0.96,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -10,
+      "x": -22.3,
       "y": -60
     },
     "_skewX": 0,
@@ -1081,47 +1010,11 @@
     "groupIndex": 3
   },
   {
-    "__type__": "cc.BoxCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 29
-    },
-    "_enabled": false,
-    "tag": 0,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_size": {
-      "__type__": "cc.Size",
-      "width": 100,
-      "height": 100
-    }
-  },
-  {
-    "__type__": "3ab28/LCz9FpphEWr36gU0e",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 29
-    },
-    "_enabled": true,
-    "script": "parkEnter",
-    "dialog": "",
-    "handler": null,
-    "highlight": {
-      "__id__": 28
-    },
-    "actionText": "Вход в парк"
-  },
-  {
     "__type__": "cc.PolygonCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 29
+      "__id__": 26
     },
     "_enabled": true,
     "tag": 0,
@@ -1155,6 +1048,121 @@
   },
   {
     "__type__": "cc.Node",
+    "_name": "tour_obstacle",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 23
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 29
+      },
+      {
+        "__id__": 30
+      }
+    ],
+    "_prefab": null,
+    "_id": "8480dxtWl1MJId/io/OH6Aa",
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": -3.22,
+    "_scaleY": 0.96,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": -0.8,
+      "y": -60
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 2
+  },
+  {
+    "__type__": "cc.PolygonCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 28
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "points": [
+      {
+        "__type__": "cc.Vec2",
+        "x": -15.3,
+        "y": 38.4
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 9.2,
+        "y": -32.6
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 38.8,
+        "y": -43.8
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 19.7,
+        "y": 56.6
+      }
+    ]
+  },
+  {
+    "__type__": "515868BESJM+JVCOP38Qnrp",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 28
+    },
+    "_enabled": true,
+    "script": "",
+    "dialog": "",
+    "handler": {
+      "__id__": 31
+    }
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 3
+    },
+    "component": "nsuScript",
+    "handler": "tourniquet",
+    "customEventData": ""
+  },
+  {
+    "__type__": "cc.Node",
     "_name": "library_enterance",
     "_objFlags": 0,
     "_parent": {
@@ -1162,10 +1170,10 @@
     },
     "_children": [
       {
-        "__id__": 34
+        "__id__": 33
       },
       {
-        "__id__": 39
+        "__id__": 38
       }
     ],
     "_tag": -1,
@@ -1213,12 +1221,15 @@
     "_name": "door",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 33
+      "__id__": 32
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
+      {
+        "__id__": 34
+      },
       {
         "__id__": 35
       },
@@ -1227,9 +1238,6 @@
       },
       {
         "__id__": 37
-      },
-      {
-        "__id__": 38
       }
     ],
     "_prefab": null,
@@ -1274,7 +1282,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 34
+      "__id__": 33
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1300,7 +1308,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 34
+      "__id__": 33
     },
     "_enabled": true,
     "_defaultClip": {
@@ -1318,7 +1326,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 34
+      "__id__": 33
     },
     "_enabled": false,
     "_kernelRadius": 4,
@@ -1345,7 +1353,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 34
+      "__id__": 33
     },
     "_enabled": true,
     "clip": null,
@@ -1359,17 +1367,17 @@
     "_name": "door_trigger",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 33
+      "__id__": 32
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 40
+        "__id__": 39
       },
       {
-        "__id__": 41
+        "__id__": 40
       }
     ],
     "_prefab": null,
@@ -1414,7 +1422,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 39
+      "__id__": 38
     },
     "_enabled": true,
     "tag": 0,
@@ -1434,14 +1442,14 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 39
+      "__id__": 38
     },
     "_enabled": true,
     "script": "parkEnter",
     "dialog": "",
     "handler": null,
     "highlight": {
-      "__id__": 38
+      "__id__": 37
     },
     "actionText": "Вход в парк"
   },
@@ -1454,13 +1462,13 @@
     },
     "_children": [
       {
-        "__id__": 43
+        "__id__": 42
       },
       {
-        "__id__": 45
+        "__id__": 44
       },
       {
-        "__id__": 50
+        "__id__": 49
       }
     ],
     "_tag": -1,
@@ -1493,8 +1501,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 2191.54,
-      "y": -270.31
+      "x": 1592,
+      "y": -270
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1508,14 +1516,14 @@
     "_name": "multy_body",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 42
+      "__id__": 41
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 44
+        "__id__": 43
       }
     ],
     "_prefab": null,
@@ -1560,7 +1568,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 43
+      "__id__": 42
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1586,12 +1594,15 @@
     "_name": "klavdia",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 42
+      "__id__": 41
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
+      {
+        "__id__": 45
+      },
       {
         "__id__": 46
       },
@@ -1600,9 +1611,6 @@
       },
       {
         "__id__": 48
-      },
-      {
-        "__id__": 49
       }
     ],
     "_prefab": null,
@@ -1647,7 +1655,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 45
+      "__id__": 44
     },
     "_enabled": true,
     "_defaultClip": {
@@ -1665,7 +1673,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 45
+      "__id__": 44
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1691,7 +1699,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 45
+      "__id__": 44
     },
     "_enabled": false,
     "_kernelRadius": 4,
@@ -1718,7 +1726,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 45
+      "__id__": 44
     },
     "_enabled": true,
     "clip": null,
@@ -1732,17 +1740,17 @@
     "_name": "klavdia_trigger",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 42
+      "__id__": 41
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 51
+        "__id__": 50
       },
       {
-        "__id__": 52
+        "__id__": 51
       }
     ],
     "_prefab": null,
@@ -1787,14 +1795,14 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 50
+      "__id__": 49
     },
     "_enabled": true,
     "script": "",
     "dialog": "klavdiaDlg",
     "handler": null,
     "highlight": {
-      "__id__": 49
+      "__id__": 48
     },
     "actionText": "Klavdia"
   },
@@ -1803,7 +1811,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 50
+      "__id__": 49
     },
     "_enabled": true,
     "tag": 0,
@@ -1854,10 +1862,10 @@
     },
     "_children": [
       {
-        "__id__": 54
+        "__id__": 53
       },
       {
-        "__id__": 59
+        "__id__": 58
       }
     ],
     "_tag": -1,
@@ -1905,12 +1913,15 @@
     "_name": "faces",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 53
+      "__id__": 52
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
+      {
+        "__id__": 54
+      },
       {
         "__id__": 55
       },
@@ -1919,9 +1930,6 @@
       },
       {
         "__id__": 57
-      },
-      {
-        "__id__": 58
       }
     ],
     "_prefab": null,
@@ -1966,7 +1974,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 54
+      "__id__": 53
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1992,7 +2000,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 54
+      "__id__": 53
     },
     "_enabled": true,
     "_defaultClip": {
@@ -2010,7 +2018,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 54
+      "__id__": 53
     },
     "_enabled": false,
     "_kernelRadius": 4,
@@ -2037,7 +2045,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 54
+      "__id__": 53
     },
     "_enabled": true,
     "clip": null,
@@ -2051,17 +2059,17 @@
     "_name": "faces_trigger",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 53
+      "__id__": 52
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 60
+        "__id__": 59
       },
       {
-        "__id__": 61
+        "__id__": 60
       }
     ],
     "_prefab": null,
@@ -2106,7 +2114,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 59
+      "__id__": 58
     },
     "_enabled": true,
     "tag": 0,
@@ -2126,14 +2134,14 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 59
+      "__id__": 58
     },
     "_enabled": true,
     "script": "parkEnter",
     "dialog": "",
     "handler": null,
     "highlight": {
-      "__id__": 58
+      "__id__": 57
     },
     "actionText": "Вход в парк"
   },
@@ -2146,10 +2154,10 @@
     },
     "_children": [
       {
-        "__id__": 63
+        "__id__": 62
       },
       {
-        "__id__": 65
+        "__id__": 64
       }
     ],
     "_tag": -1,
@@ -2197,14 +2205,14 @@
     "_name": "time",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 62
+      "__id__": 61
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 64
+        "__id__": 63
       }
     ],
     "_prefab": null,
@@ -2249,7 +2257,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 63
+      "__id__": 62
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -2275,14 +2283,14 @@
     "_name": "label",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 62
+      "__id__": 61
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 66
+        "__id__": 65
       }
     ],
     "_prefab": null,
@@ -2327,7 +2335,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 65
+      "__id__": 64
     },
     "_enabled": true,
     "_useOriginalSize": false,
@@ -2353,31 +2361,31 @@
     },
     "_children": [
       {
-        "__id__": 68
+        "__id__": 67
       },
       {
-        "__id__": 70
+        "__id__": 69
       },
       {
-        "__id__": 72
+        "__id__": 71
       },
       {
-        "__id__": 74
+        "__id__": 73
       },
       {
-        "__id__": 76
+        "__id__": 75
       },
       {
-        "__id__": 78
+        "__id__": 77
       },
       {
-        "__id__": 80
+        "__id__": 79
       },
       {
-        "__id__": 82
+        "__id__": 81
       },
       {
-        "__id__": 84
+        "__id__": 83
       }
     ],
     "_tag": -1,
@@ -2425,14 +2433,14 @@
     "_name": "New Node",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 67
+      "__id__": 66
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 69
+        "__id__": 68
       }
     ],
     "_prefab": null,
@@ -2477,7 +2485,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 68
+      "__id__": 67
     },
     "_enabled": true,
     "tag": 0,
@@ -2514,14 +2522,14 @@
     "_name": "New Node",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 67
+      "__id__": 66
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 71
+        "__id__": 70
       }
     ],
     "_prefab": null,
@@ -2566,7 +2574,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 70
+      "__id__": 69
     },
     "_enabled": true,
     "tag": 0,
@@ -2603,14 +2611,14 @@
     "_name": "New Node",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 67
+      "__id__": 66
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 73
+        "__id__": 72
       }
     ],
     "_prefab": null,
@@ -2655,7 +2663,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 72
+      "__id__": 71
     },
     "_enabled": true,
     "tag": 0,
@@ -2675,14 +2683,14 @@
     "_name": "New Node",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 67
+      "__id__": 66
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 75
+        "__id__": 74
       }
     ],
     "_prefab": null,
@@ -2727,7 +2735,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 74
+      "__id__": 73
     },
     "_enabled": true,
     "tag": 0,
@@ -2747,14 +2755,14 @@
     "_name": "New Node",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 67
+      "__id__": 66
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 77
+        "__id__": 76
       }
     ],
     "_prefab": null,
@@ -2799,7 +2807,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 76
+      "__id__": 75
     },
     "_enabled": true,
     "tag": 0,
@@ -2819,14 +2827,14 @@
     "_name": "New Node",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 67
+      "__id__": 66
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 79
+        "__id__": 78
       }
     ],
     "_prefab": null,
@@ -2871,7 +2879,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 78
+      "__id__": 77
     },
     "_enabled": true,
     "tag": 0,
@@ -2893,13 +2901,13 @@
       },
       {
         "__type__": "cc.Vec2",
-        "x": -7.3,
-        "y": -33.6
+        "x": -0.3,
+        "y": -34.3
       },
       {
         "__type__": "cc.Vec2",
-        "x": 138.7,
-        "y": 80.5
+        "x": 146.7,
+        "y": 83.9
       }
     ]
   },
@@ -2908,14 +2916,14 @@
     "_name": "New Node",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 67
+      "__id__": 66
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 81
+        "__id__": 80
       }
     ],
     "_prefab": null,
@@ -2960,7 +2968,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 80
+      "__id__": 79
     },
     "_enabled": true,
     "tag": 0,
@@ -2980,14 +2988,14 @@
     "_name": "New Node",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 67
+      "__id__": 66
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 83
+        "__id__": 82
       }
     ],
     "_prefab": null,
@@ -3032,7 +3040,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 82
+      "__id__": 81
     },
     "_enabled": true,
     "tag": 0,
@@ -3069,14 +3077,14 @@
     "_name": "New Node",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 67
+      "__id__": 66
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 85
+        "__id__": 84
       }
     ],
     "_prefab": null,
@@ -3121,7 +3129,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 84
+      "__id__": 83
     },
     "_enabled": true,
     "tag": 0,

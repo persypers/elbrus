@@ -11,6 +11,10 @@ cc.Class({
         cc.scene = this;
     },
 
+    tourniquet : function() {
+			player.textField.show('The pass is locked by tourniquet.')
+    },
+
 	update : function() {
 		var playerNode = cc.playerNode;
 		if(playerNode) {
@@ -100,6 +104,9 @@ cc.Class({
                 },
                 restore_succes : {
                     text : 'Вежливо попросить найти вас в списке студентов, чтобы пройти без пропуска.',
+                    script : ()=>{
+                        cc.find("tourniquet", cc.scene.node).active = false;
+                    },
                     reply : 'go_wait'
                 },
                 end : {
