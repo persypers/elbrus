@@ -19,7 +19,7 @@
   },
   "packageName": "org.cocos2d.helloworld",
   "privateKey": "",
-  "renderMode": "0",
+  "renderMode": "2",
   "startScene": "d6f02a81-679c-4321-9b59-fe859fba3a4f",
   "title": "Dreadline",
   "webOrientation": "auto"

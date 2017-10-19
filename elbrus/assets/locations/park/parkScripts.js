@@ -32,6 +32,7 @@ cc.Class({
 		if(playerNode && playerNode.x > 200) {
 			playerNode.x = this.node.width - 200;
 		}
+		cc.controller.getComponent(cc.AudioSource).play();
 	},
 
 	update : function() {

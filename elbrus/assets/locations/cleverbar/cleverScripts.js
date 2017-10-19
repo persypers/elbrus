@@ -11,6 +11,10 @@ cc.Class({
         cc.scene = this;
     },
 
+	start : function() {
+		cc.controller.getComponent(cc.AudioSource).play();
+	},
+
     freebench : function() {
         if(!this._suicideFail) {
             this._suicideFail = true;

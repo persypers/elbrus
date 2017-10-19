@@ -11,6 +11,10 @@ cc.Class({
         cc.scene = this;
     },
 
+	start : function() {
+		cc.controller.getComponent(cc.AudioSource).play();
+	},
+
     tourniquet : function() {
 			player.textField.show('The pass is locked by tourniquet.')
     },

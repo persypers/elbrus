@@ -16,7 +16,7 @@ cc.Class({
 			player.jumpedWindow = false;
 			cc.eventLoop.push({time : 1, handler : ()=>{cc.player.say('This is the first floor. It` was a stupid idea.')}}) //Это первый этаж. Сомнительная затея.
 		}
-		//cc.controller.getComponent(cc.AudioSource).play();
+		cc.controller.getComponent(cc.AudioSource).play();
 	},
 
 	update : function() {
