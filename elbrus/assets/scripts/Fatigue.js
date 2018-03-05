@@ -2,21 +2,33 @@ var FATIGUE_NONE = 12 * 60;
 var FATIGUE_TIRED = 18 * 60;
 var FATIGUE_DEPRIVED = 24 * 60;
 
-var phrases = {
+var phrases = cc.locale == 'ru' ? {
 	changed : [
-		/*"Вы как следует выспались и теперь полны энергии",
+		"Вы как следует выспались и теперь полны энергии",
 		"Вас начинает клонить в сон",
-		"Вы еле держитесь на ногах",*/
+		"Вы еле держитесь на ногах",
+	],
+	// рандомные фразы информирующие о лёгком голоде
+	tired : [
+		'Вам хочется присесть, а лучше - прилечь',
+		"Вы начинаете клевать носом",
+		"*смачный зевок*",
+		"Вы зеваете",
+	],
+	// рандомные фразы информирующие о сильном голоде
+	deprived : [
+		"Ваши глаза ужасно слипаются",
+		"Вы еле держитесь на ногах",
+		"Ещё чуть-чуть и вы вырубитесь прямо на ходу",
+	]
+} :	{
+	changed : [
 		"You awake vigorous and ready for great things",
 		"You feel sleepy",
 		"You're so tired you can barely stand",
 	],
 	// рандомные фразы информирующие о лёгком голоде
 	tired : [
-		/*'Вам хочется присесть, а лучше - прилечь',
-		"Вы начинаете клевать носом",
-		"*смачный зевок*",
-		"Вы зеваете",*/
 		"You want to sit... to lie down",
 		"You feel sleepy",
 		"*YAAWN*",
@@ -24,14 +36,13 @@ var phrases = {
 	],
 	// рандомные фразы информирующие о сильном голоде
 	deprived : [
-		/*"Ваши глаза ужасно слипаются",
-		"Вы еле держитесь на ногах",
-		"Ещё чуть-чуть и вы вырубитесь прямо на ходу",*/
 		"You're so tired you can barely stand",
 		"You can't go any further you need to lie down, for a moment",
 		"You're REALLY tired",
 	]
 }
+
+
 
 var nextEvent;
 
@@ -116,8 +127,10 @@ module.exports = {
 			cc.eventLoop.time += (fatigue >= FATIGUE_TIRED ? 15 : 12) * 60;
 			cc.player.fatigue.value = 0;
 			cc.player.stress += 60;
-			//return ('Вы проспали!');
-			return ("You've overslept!");
+			return ({
+				text_en : "You've overslept!",
+				text_ru : 'Вы проспали!'
+			}['text_' + cc.locale]);
 		} else {
 			cc.eventLoop.time += 8 * 60;
 			cc.player.fatigue.value = 0;
@@ -133,8 +146,10 @@ module.exports = {
 			cc.eventLoop.time += (fatigue >= FATIGUE_TIRED ? 16 : 12) * 60;
 			cc.player.fatigue.value = 0;
 			cc.player.stress += 90;
-			//return ('Вы проспали!');
-			return ("You've overslept!");
+			return ({
+				text_en : "You've overslept!",
+				text_ru : 'Вы проспали!'
+			}['text_' + cc.locale]);
 		} else {
 			cc.eventLoop.time += 4 * 60;
 			cc.player.fatigue.value = Math.max(0, fatigue - 8 * 60);

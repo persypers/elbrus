@@ -62,11 +62,15 @@ cc.Class({
 	topicAction : function(topic, npcTopic) {
 		var seq = [];
 		var choices;
-		seq.push(this.textAction(topic.text, npcTopic));
+		var string = topic['text_' + cc.locale];
+		seq.push(this.textAction(string, npcTopic));
 		if(typeof(topic.script) == 'function') {
 			seq.push(cc.callFuncAsync((asyncAction)=> {
 				var addText = topic.script();
 				if(addText) {
+					if(typeof(addText) == 'object') {
+						addText = addText['text_' + cc.locale];
+					}
 					addText = cc.player.garble(addText);
 					this.node.runAction(cc.sequence(
 						this.textAction(addText, true),

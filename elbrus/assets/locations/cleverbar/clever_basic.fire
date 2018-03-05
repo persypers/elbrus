@@ -1700,7 +1700,7 @@
     "highlight": {
       "__id__": 43
     },
-    "actionText": "Hipsters"
+    "actionText": "Хипстеры"
   },
   {
     "__type__": "cc.Node",
@@ -1992,7 +1992,7 @@
     "highlight": {
       "__id__": 52
     },
-    "actionText": "Bartender"
+    "actionText": "Бармэн"
   },
   {
     "__type__": "cc.Node",
@@ -2362,7 +2362,7 @@
     "highlight": {
       "__id__": 61
     },
-    "actionText": "Exit"
+    "actionText": "Выход"
   },
   {
     "__type__": "cc.Node",

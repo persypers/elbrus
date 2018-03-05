@@ -26,8 +26,7 @@ cc.Class({
 		if(this.node.active) {
 			this._speechQueue.push(msg);
 		} else {
-			var text = msg.text && msg.text || msg;
-			this.show(text, msg.duration, ()=>{
+			this.show(msg, msg.duration, ()=>{
 				var msg = this._speechQueue.shift();
 				if(msg) {
 					this.say(msg);
@@ -38,9 +37,13 @@ cc.Class({
 
 	show : function(text, duration, onDone) {
 		if(this.node.active) return;
-		if(typeof(text) == 'object' && text instanceof cc.Event) {
-			text = duration;
-			duration = DEFAULT_DURATION;
+		if(typeof(text) == 'object') {
+			if(text instanceof cc.Event) {
+				text = duration;
+				duration = DEFAULT_DURATION;
+			} else {
+				text = text['text_' + cc.locale];
+			}
 		}
 		if(!duration) {
 			duration = DEFAULT_DURATION;

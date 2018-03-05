@@ -67,8 +67,10 @@ cc.Class({
 			cc.player.blackOut = true;
 			if(cc.scene.node.name == 'room_back') {
 				cc.scene.isDark = true;
-				//cc.player.say('Ой! Может пробки выбило?');
-				cc.player.say('Oi! The power just went out!');
+				cc.player.say({
+					text_ru:'Ой! Может пробки выбило?',
+					text_en : 'Oi! The power just went out!',
+				});
 			}
 		}});
 
@@ -99,33 +101,33 @@ cc.Class({
 
 var annoyMsg = [
 	{
-		//text : "Лол! Пора писать диплом! Пропущено 230 дней назад.",
-		text : "LOL! Time to write grad paper! Delayer 230 days ago.",
+		text_ru : "Лол! Пора писать диплом! Пропущено 230 дней назад.",
+		text_en : "LOL! Time to write grad paper! Delayer 230 days ago.",
 		time : 5, //первые секунды игры
 	},
 	{
-		//text : "Лол! Пора писать диплом!",
-		text : "LOL! Time to write grad paper!",
+		text_ru : "Лол! Пора писать диплом!",
+		text_en : "LOL! Time to write grad paper!",
 		time : 24 * 60, //+ сутки
 	},
 	{
-		//text : "Лол! Пора писать диплом!",
-		text : "LOL! Time to write grad paper!",
+		text_ru : "Лол! Пора писать диплом!",
+		text_en : "LOL! Time to write grad paper!",
 		time : 48 * 60, //+ 2ое суток
 	},
 	{
-		//text : "Напоминаем вам о задолжености по услуге Обещаный платеж... ",
-		text : "Your delayed payment service hasn't been reactivated for... ",
+		text_ru : "Напоминаем вам о задолжености по услуге Обещаный платеж... ",
+		text_en : "Your delayed payment service hasn't been reactivated for... ",
 		time : 30 * 60, // на второй день
-		//sender : "ПРОвайдер",
-		sender : "InterPRO",
+		sender_ru : "ПРОвайдер",
+		sender_en : "InterPRO",
 	},
 	{
-		//text : "Занесите, пожалуйста, учебники. Они висят на вас уже больше...",
-		text : "Please return your overdue books, it's been over...",
+		text_ru : "Занесите, пожалуйста, учебники. Они висят на вас уже больше...",
+		text_en : "Please return your overdue books, it's been over...",
 		time : 27 * 60, // на второй день
-		//sender : "Клавдия Ильинична",
-		sender : "Claudia Yleenichneua",
+		sender_ru : "Клавдия Ильинична",
+		sender_en : "Claudia Yleenichneua",
 	},
 	
 ]

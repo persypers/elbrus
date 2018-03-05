@@ -419,7 +419,7 @@
     "highlight": {
       "__id__": 9
     },
-    "actionText": "Bench"
+    "actionText": "Лавочка"
   },
   {
     "__type__": "cc.ClickEvent",

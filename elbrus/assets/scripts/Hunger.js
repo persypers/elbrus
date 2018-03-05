@@ -2,23 +2,34 @@ var HUNGER_NONE = 6 * 60;
 var HUNGER_LOW = 12 * 60;
 var HUNGER_STARVE = 24 * 60;
 
-var phrases = {
+var phrases = cc.locale == 'ru' ? {
 	hungerChanged : [
-		//"Вы снова сыты",
-		"You're full once more",
-		//"У вас в животе жалобно урчит",
-		"Your stomach makes a sad noise",
-		//"У вас темнеет в глазах от голода",
-		"You're starving!",
+		"Вы снова сыты",
+		"У вас в животе жалобно урчит",
+		"У вас темнеет в глазах от голода",
 	],
 	// рандомные фразы информирующие о лёгком голоде
 	hungerLow : [
-		/*'У вас в животе жалобно урчит',
+		'У вас в животе жалобно урчит',
 		"Сейчас бы перекусить чего",
 		"Внезапно вам захотелось кукурузных хлопьев с молоком",
 		"Неплохо было бы поесть в обозримом будущем",
 		"Когда я в последний раз кушал?"
-		*/
+	],
+	// рандомные фразы информирующие о сильном голоде
+	hungerStarve : [
+		"Вам так хочется есть, что вы еле передвигаете ноги",
+		"У вас темнеет в глазах от голода",
+		"Живот настойчиво урчит, а перед глазами проносятся котлеты",
+	]
+} : {
+	hungerChanged : [
+		"You're full once more",
+		"Your stomach makes a sad noise",
+		"You're starving!",
+	],
+	// рандомные фразы информирующие о лёгком голоде
+	hungerLow : [
 		"Your stomach makes a sad noise",
 		"Suddenly you crave corn flakes",
 		"A lunch would be nice",
@@ -26,10 +37,6 @@ var phrases = {
 	],
 	// рандомные фразы информирующие о сильном голоде
 	hungerStarve : [
-		/*"Вам так хочется есть, что вы еле передвигаете ноги",
-		"У вас темнеет в глазах от голода",
-		"Живот настойчиво урчит, а перед глазами проносятся котлеты",
-		*/
 		"You're so hungry you can barely move your legs",
 		"You're starving!",
 		"Your stomach aches painfully and you see meatballs flashing before your eyes",
@@ -120,8 +127,10 @@ module.exports = {
 		cc.player.hunger.value = 0;
 		cc.eventLoop.time += 60;
 		cc.player.stress *= 0.25;
-		//return ('Было вкусно.');
-		return ('That was delicious.');
+		return ({
+			text_en : 'That was delicious.',
+			text_ru : 'Было вкусно.',
+		});
 	},
 
 	eatStale : () => {
@@ -129,7 +138,10 @@ module.exports = {
 		cc.player.hunger.value = Math.max(0, cc.player.hunger.value - 60 * 10);
 		cc.player.stress += 30;
 		cc.eventLoop.time += 15;
-		//return  'Иногда нужно прикоснуться к своему прошлому, чтобы шагнуть в будующее.';
-		return  'Sometimes you have to draw on your past to be able to delve into your future.';
+		//return  
+		return  {
+			text_en :'Sometimes you have to draw on your past to be able to delve into your future.',
+			text_ru : 'Иногда нужно прикоснуться к своему прошлому, чтобы шагнуть в будующее.',
+		};
 	},
 }

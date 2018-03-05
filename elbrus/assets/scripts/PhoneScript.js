@@ -60,11 +60,13 @@ cc.Class({
 		this._messages.push(message);
 		var node = cc.instantiate(this.messagePrefab);
 		message.node = node;
-		node.getChildByName('sender').getComponent(cc.Label).string = typeof(message.sender) == 'string' ? message.sender : 'Remindah2000';
-		if(typeof(message.text) == 'function') {
-			message.text = message.text();
+		var senderKey = 'sender_' + cc.locale;
+		node.getChildByName('sender').getComponent(cc.Label).string = typeof(message[senderKey]) == 'string' ? message[senderKey] : 'Напоминалкин2000';
+		var key = 'text_' + cc.locale;
+		if(typeof(message[key]) == 'function') {
+			message[key] = message[key]();
 		}
-		node.getChildByName('text').getComponent(cc.Label).string = message.text
+		node.getChildByName('text').getComponent(cc.Label).string = message[key];
 		message.isRead = false;
 		this.unread ++;
 		node.parent = this.scrollContent;

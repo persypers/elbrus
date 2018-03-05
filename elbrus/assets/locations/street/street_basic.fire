@@ -882,7 +882,7 @@
     "highlight": {
       "__id__": 19
     },
-    "actionText": "Window"
+    "actionText": "Окно"
   },
   {
     "__type__": "cc.Sprite",
@@ -1200,7 +1200,7 @@
     "highlight": {
       "__id__": 29
     },
-    "actionText": "Dormitory entrance"
+    "actionText": "Вход в общежитие"
   },
   {
     "__type__": "cc.Node",
@@ -1496,7 +1496,7 @@
     "highlight": {
       "__id__": 38
     },
-    "actionText": "Payment terminal"
+    "actionText": "Платёжный терминал"
   },
   {
     "__type__": "cc.Sprite",
@@ -1817,7 +1817,7 @@
     "highlight": {
       "__id__": 48
     },
-    "actionText": "Park entrance"
+    "actionText": "Вход в парк"
   },
   {
     "__type__": "cc.Node",
@@ -2160,7 +2160,7 @@
     "highlight": {
       "__id__": 58
     },
-    "actionText": "Bar"
+    "actionText": "Бар"
   },
   {
     "__type__": "cc.Node",
@@ -2646,7 +2646,7 @@
     "highlight": {
       "__id__": 70
     },
-    "actionText": "Lady in the booth"
+    "actionText": "Дама в будке"
   },
   {
     "__type__": "cc.PolygonCollider",

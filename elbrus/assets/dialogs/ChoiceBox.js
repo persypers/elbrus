@@ -22,7 +22,7 @@ cc.Class({
 			var node = cc.instantiate(this.labelTemplate);
 			node.parent = this.labelTemplate.parent;
 			node._label = node.getComponent(cc.Label);
-			var text = t.text || t;
+			var text = t['text_' + cc.locale] || t;
 			text = cc.player.garble(text);
 			node._label.string = text;
 			node.active = true;

@@ -1,5 +1,7 @@
 var MAX_STRESS = 60 * 40;
 
+cc.locale = 'ru';
+
 var player = {
 	_stress : 0,
 	hunger : require('Hunger'),
@@ -18,7 +20,7 @@ var player = {
     ideasMax : 1,
     ideasCrisis : 0,
 	
-	ideas : require('Ideas'),
+	ideas : cc.locale == 'ru' ? require('IdeasRus') : require('Ideas'),
 
 	phrases : require('PlayerPhrases'),
 	

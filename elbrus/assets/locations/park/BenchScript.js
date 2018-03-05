@@ -16,15 +16,15 @@ cc.Class({
 			this.gopSprite.node.active = true;
 			this.emptySprite.node.active = false;
 			this.activeArea.highlight = this.gopSprite.getComponent('HoverScript');
-			//this.activeArea.actionText = 'Простой человек';
-			this.activeArea.actionText = 'Commoner';
+			this.activeArea.actionText = 'Простой человек';
+			//this.activeArea.actionText = 'Commoner';
 			this.isGop = true;
 		} else {
 			this.gopSprite.node.active = false;
 			this.emptySprite.node.active = true;
 			this.activeArea.highlight = this.emptySprite.getComponent('HoverScript');
-			//this.activeArea.actionText = 'Лавочка';
-			this.activeArea.actionText = 'Bench';
+			this.activeArea.actionText = 'Лавочка';
+			//this.activeArea.actionText = 'Bench';
 		}
 		if(Math.random() < cc.lerp(0.2, 0.6, stress)){
 			this.puddle.active = true;
@@ -46,28 +46,34 @@ cc.Class({
 		if(this.isGop) {
 			cc.player.stress += 10;
 			this.textField.show([
-				"kek",
+				/*"kek",
 				"lol",
 				"heh",
 				"LOL",
 				"Sucker...",
-				"Wuss..."
+				"Wuss..."*/
+				'Хы!',
+				'Ха!',
+				'Лол',
+				'кекс...',
 			].pickRandom());
 		} else {
 			cc.player.say([
-				/*'Вот досада!',
+				'Вот досада!',
 				'Вы промочили ноги.',
-				"Ой!"*/
-				"You wet your feet",
-				"Ouch!",
+				"Ой!"
+				/*"You wet your feet",
+				"Ouch!",*/
 			].pickRandom());
 		}
 	},
 
 	onBenchTrigger : function() {
 		if(!cc.player.benchIntro && !this.isGop) {
-			//cc.player.say('Кажется, на этой лавочке можно сосредоточиться.');
-			cc.player.say('This bench looks like a good place to concentrate.');
+			cc.player.say({
+				text_ru:'Кажется, на этой лавочке можно сосредоточиться.',
+				text_en : 'This bench looks like a good place to concentrate.'
+			});
 			cc.player.benchIntro = true;
 		}
 	}

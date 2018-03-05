@@ -874,7 +874,7 @@
     "highlight": {
       "__id__": 23
     },
-    "actionText": "Fuse box"
+    "actionText": "Щиток"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -1439,7 +1439,7 @@
     "highlight": {
       "__id__": 37
     },
-    "actionText": "Outside"
+    "actionText": "Наружу"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -1901,7 +1901,7 @@
     "highlight": {
       "__id__": 51
     },
-    "actionText": "Your room"
+    "actionText": "Ваша комната"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -2400,7 +2400,7 @@
     "highlight": {
       "__id__": 67
     },
-    "actionText": "Electrician"
+    "actionText": "Электрик"
   },
   {
     "__type__": "cc.ClickEvent",

@@ -27,7 +27,7 @@ cc.Class({
 	},
 
 	nextAnim : function() {
-		console.log('nextAnim!');
+		//console.log('nextAnim!');
 		var amp = 1.0 - cc.player.getNormalizedStress();
 		var clip = this.anim.getClips().pickRandom();
 		clip.sample = Math.floor(Math.random() * 15 + 5);
